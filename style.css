@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #000000;
+    background-image: url(img/fundo-fifa.png);
+    background-size: cover;
+}
+
+h1 {
+    color: #eccf26;
+    margin-top: -50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo {
+    margin-left: 45.2%;
+}
+
+.lista {
+    margin-left: 24%;
+    justify-content: space-between;
+}
+
+.lista ul {
+    align-items: center;
+    width: 100%;
+    max-width: 50%;
+    margin-right: 200%;
+    list-style: none;
+    display: flex;
+}
+
+.lista ul li {
+    list-style: none;
+    display: inline;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+    margin: 0 5%;
+}
+
+.lista a {
+    color: #e6d43b;
+    font-weight: 500;
+    font-size: 1.1em;
+    position: relative;
+    padding-bottom: 5px;
+    text-decoration: none;
+}
+
+.lista a:hover,
+.lista a.active {
+    color: #e6d43b;
+}
+
+.lista a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: rgb(197, 135, 0);
+    border-radius: 2px;
+    text-decoration: none;
+}
+
+.botao {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0000007b;
+    color: rgb(252, 190, 4);
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 550;
+    box-shadow: 0px 0px 10px 2px #4c6e4427;
+    transition: background-color .3s ease, transform .5s ease;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.botao:hover {
+    background-color: #fcbe04;
+    color: #5c4976;
+    box-shadow: 0px 0px 10px 2px #fcbe04;
+    transform: scale(1.0);
+    cursor: pointer;
+}
+
+.active {
+    color: white;
+    background-color: blue;
+    font-weight: bold;
+}
+
+.menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.menu button {
+    background-color: #e62429;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: lighter;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.menu button:hover {
+    color: #aaaaaa;
+}
+
+.menu-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -70%;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.menu-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.menu-content a:hover {
+    background-color: #aaaaaa;
+    border-radius: 5px;
+}
+
+.menu:hover .menu-content {
+    display: block;
+}
