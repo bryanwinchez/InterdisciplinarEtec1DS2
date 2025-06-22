@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Início | Mundial de Clubes 2025</title>
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,6 +24,7 @@
                     <li><a href="clubes.html" class="botao">Clubes</a></li>
                     <li><a href="jogos.html" class="botao">Jogue</a></li>
                     <li><a href="favorito.html" class="botao">Favorito</a></li>
+                    <li><a href="sobre.html" class="botao">Sobre</a></li>
                 </ul>
             </nav>
         </div>
@@ -120,6 +122,18 @@
             </div>
         </div>
     </main>
+
+            <!-- SEÇÃO DO FORMULÁRIO -->
+        <section class="pesquisa-secao">
+            <h2 class="glitch" data-text="Dê sua Opinião">Dê sua Opinião</h2>
+            <br>
+            <p>Sua voz é importante para nós! Participe da nossa pesquisa rápida e ajude a melhorar nossa comunidade.</p>
+            <button class="botao-grande" id="abrirModalBtn">
+                <i class="fas fa-poll"></i>
+                Participar da Pesquisa
+            </button>
+        </section>
+    </main>
     
     <footer class="footer">
         <div class="footer-container">
@@ -135,10 +149,11 @@
             <div class="footer-section">
                 <h3>Navegação</h3>
                 <ul class="footer-nav">
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="clubes.html">Clubes</a></li>
-                    <li><a href="jogos.html">Jogue</a></li>
-                    <li><a href="favorito.html">Favorito</a></li>
+                    <li><a href="index.html" class="botao">Início</a></li>
+                    <li><a href="clubes.html" class="botao">Clubes</a></li>
+                    <li><a href="jogos.html" class="botao active">Jogue</a></li>
+                    <li><a href="favorito.html" class="botao">Favorito</a></li>
+                    <li><a href="sobre.html" class="botao">Sobre</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -155,6 +170,53 @@
             <p>&copy; 2025 Mundial de Clubes FIFA. Desenvolvido com <span class="footer-heart">♥</span> para os fãs do futebol.</p>
         </div>
     </footer>
+
+        <!-- HTML DO MODAL DO FORMULÁRIO (ATUALIZADO PARA FORMSUBMIT) -->
+    <div id="pesquisaModal" class="modal-overlay">
+        <div class="modal-conteudo">
+            <button id="fecharModalBtn" class="modal-fechar">&times;</button>
+            <h2 class="glitch" data-text="Pesquisa Rápida">Pesquisa Rápida</h2>
+            
+            <!-- ATUALIZAÇÃO IMPORTANTE: O 'action' agora aponta para o FormSubmit. SUBSTITUA COM O SEU E-MAIL. -->
+            <form id="pesquisaForm" action="https://formsubmit.co/kauanbryansilveirasilva@gmail.com" method="POST">
+                
+                <!-- Configurações do FormSubmit -->
+                <input type="hidden" name="_next" value="https://https://copamundial-grupob.netlify.app/obrigado.html"> <!-- URL completa para a página de agradecimento -->
+                <input type="hidden" name="_subject" value="Nova Resposta da Pesquisa - Mundial 2025!">
+                <input type="hidden" name="_captcha" value="false"> <!-- Desativa o reCAPTCHA do FormSubmit -->
+                <input type="hidden" name="_template" value="table"> <!-- Recebe o e-mail formatado como tabela -->
+
+                <div class="form-grupo">
+                    <label for="palpiteCampeao">Na sua opinião, quem será o campeão do Mundial?</label>
+                    <select id="palpiteCampeao" name="palpite_campeao" required>
+                        <option value="" disabled selected>Selecione um time...</option>
+                        <option value="PSG">Paris Saint-Germain</option>
+                        <option value="Atletico de Madrid">Atlético de Madrid</option>
+                        <option value="Botafogo">Botafogo</option>
+                        <option value="Seattle Sounders">Seattle Sounders</option>
+                        <option value="Outro">Outro (de outro grupo)</option>
+                    </select>
+                </div>
+                <div class="form-grupo">
+                    <label>Como você avalia nosso site?</label>
+                    <div class="rating-estrelas">
+                        <i class="fas fa-star" data-valor="1"></i>
+                        <i class="fas fa-star" data-valor="2"></i>
+                        <i class="fas fa-star" data-valor="3"></i>
+                        <i class="fas fa-star" data-valor="4"></i>
+                        <i class="fas fa-star" data-valor="5"></i>
+                    </div>
+                    <input type="hidden" name="avaliacao_estrelas" id="avaliacaoEstrelasInput" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="comentario">Deixe seu comentário ou sugestão:</label>
+                    <textarea id="comentario" name="comentario" rows="4" placeholder="O que podemos melhorar?"></textarea>
+                </div>
+                
+                <button type="submit" class="botao-grande">Enviar Resposta</button>
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

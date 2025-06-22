@@ -531,6 +531,205 @@ header {
     transition: color 0.3s ease;
 }
 
+.sobre-card {
+    text-align: center;
+    padding: 2rem 2.5rem;
+}
+.sobre-card h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 1rem;
+}
+.sobre-card p {
+    line-height: 1.8;
+    max-width: 750px;
+    margin: 0 auto 1.5rem auto;
+    opacity: 0.9;
+}
+
+/* --- BOTÃO GRANDE (reutilizável) --- */
+.botao-grande {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--gradiente-destaque);
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: var(--transicao-media);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.botao-grande:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+.botao-grande i {
+    margin-right: 10px;
+}
+
+/* --- SEÇÃO DA PESQUISA (index.html) --- */
+.pesquisa-secao {
+    margin-top: 5rem;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    background: var(--gradiente-card);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.pesquisa-secao p {
+    max-width: 600px;
+    margin: -1rem auto 2rem;
+    opacity: 0.8;
+    line-height: 1.7;
+}
+
+/* --- MODAL E FORMULÁRIO --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-overlay.visivel {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-conteudo {
+    background: var(--gradiente-card);
+    padding: 2.5rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+.modal-overlay.visivel .modal-conteudo {
+    transform: scale(1);
+}
+
+.modal-fechar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--texto-claro);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+    transition: var(--transicao-rapida);
+}
+.modal-fechar:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* --- ESTILOS DO FORMULÁRIO --- */
+#pesquisaForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+}
+.form-grupo label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+.form-grupo select,
+.form-grupo textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--fundo-escuro);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--texto-claro);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+.form-grupo select:focus,
+.form-grupo textarea:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 10px rgba(236, 207, 38, 0.3);
+}
+
+/* --- RATING DE ESTRELAS --- */
+.rating-estrelas {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.8rem;
+    color: #555; /* Cor da estrela inativa */
+    cursor: pointer;
+}
+.rating-estrelas i {
+    transition: var(--transicao-rapida);
+}
+.rating-estrelas i.hover {
+    color: #999;
+}
+.rating-estrelas i.selecionada {
+    color: var(--cor-primaria);
+    text-shadow: 0 0 10px var(--cor-primaria);
+    transform: scale(1.1);
+}
+
+/* --- MENSAGENS DE FEEDBACK --- */
+#mensagem.sucesso {
+    color: #28a745;
+    font-weight: 600;
+}
+#mensagem.erro {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/*
+  Adicione este código ao final do seu ficheiro style.css
+  para estilizar as mensagens de sucesso e erro do formulário.
+*/
+
+#formStatus {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    display: none; /* Escondido por padrão */
+}
+
+#formStatus.sucesso {
+    display: block;
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    border: 1px solid rgba(40, 167, 69, 0.5);
+}
+
+#formStatus.erro {
+    display: block;
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+    border: 1px solid rgba(220, 53, 69, 0.5);
+}
+
 
 
 /* -------------------
