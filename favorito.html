@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Favorito | Mundial de Clubes 2025</title>
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css"> </head>
+
+<body>
+  <div class="cursor"></div>
+
+  <header>
+    <a href="index.html" class="logo-link">
+        <img src="img/logo-fifa.png" alt="FIFA Logo" class="logo" width="130">
+    </a>
+    <button class="menu-toggle" aria-label="Abrir Menu">☰</button>
+    <div class="lista">
+        <nav>
+            <ul>
+                <li><a href="index.html" class="botao">Início</a></li>
+                <li><a href="clubes.html" class="botao">Clubes</a></li>
+                <li><a href="calendario.html" class="botao">Calendário</a></li>
+                <li><a href="sobre.html" class="botao">Sobre</a></li>
+                <li><a href="jogos.html" class="botao">Jogue</a></li>
+                <li><a href="favorito.html" class="botao active">Favorito</a></li> </ul>
+        </nav>
+    </div>
+  </header>
+
+  <section class="match-card fav-selector"> <h2>Selecione seu Time Favorito - Grupo B</h2>
+
+    <div class="grupob-times" id="timesContainer">
+      <img src="img/botafogo-logo.png" alt="Botafogo" data-time="Botafogo">
+      <img src="img/psg-logo.png" alt="PSG" data-time="PSG">
+      <img src="img/seattle-logo.png" alt="Seattle Sounders" data-time="Seattle Sounders">
+      <img src="img/atletico-logo.png" alt="Atlético de Madrid" data-time="Atlético de Madrid">
+    </div>
+
+    <button class="botao fav-selector-btn" onclick="salvarTime()">Salvar Time</button>
+
+    <div id="mensagem"></div>
+  </section>
+
+  <footer class="footer">
+      <div class="footer-container">
+          <div class="footer-section">
+              <div class="footer-logo">
+                  <img src="img/logo-fifa.png" alt="FIFA Logo">
+                  <span class="footer-logo-text">Mundial 2025</span>
+              </div>
+              <p class="footer-description">
+                  Acompanhe todas as emoções do Mundial de Clubes FIFA 2025.
+                  Os melhores times do mundo se enfrentam nos Estados Unidos
+                  em uma competição histórica e inesquecível.
+              </p>
+          </div>
+          <div class="footer-section">
+              <h3>Navegação</h3>
+              <ul class="footer-nav">
+                  <li><a href="index.html">Início</a></li>
+                  <li><a href="clubes.html">Clubes</a></li>
+                  <li><a href="calendario.html">Calendário</a></li>
+                  <li><a href="sobre.html">Sobre</a></li>
+                  <li><a href="jogos.html">Jogue</a></li>
+                  <li><a href="favorito.html">Favorito</a></li>
+              </ul>
+          </div>
+          <div class="footer-section">
+              <h3>Informações</h3>
+              <ul class="footer-nav">
+                  <li><a href="#regulamento">Paris Saint-Germain</a></li>
+                  <li><a href="#ingressos">Atlético de Madrid</a></li>
+                  <li><a href="#noticias">Botafogo</a></li>
+                  <li><a href="#estatisticas">Seattle Sounders</a></li>
+              </ul>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2025 Mundial de Clubes FIFA. Desenvolvido com <span class="footer-heart">♥</span> para os fãs do futebol mundial.</p>
+      </div>
+  </footer>
+
+  <script src="cursor.js"></script>
+  <script>
+    let timeSelecionado = "";
+    const imagens = document.querySelectorAll('#timesContainer img');
+
+    // Recuperar time salvo do localStorage
+    const salvo = localStorage.getItem("timeFavorito");
+    if (salvo) {
+      document.getElementById("mensagem").innerText = `Seu time favorito é: ${salvo}`;
+      imagens.forEach(img => {
+        if (img.dataset.time === salvo) {
+          img.classList.add("selecionado");
+          timeSelecionado = salvo;
+        }
+      });
+    }
+
+    // Selecionar time clicando na imagem
+    imagens.forEach(img => {
+      img.addEventListener('click', () => {
+        imagens.forEach(i => i.classList.remove("selecionado"));
+        img.classList.add("selecionado");
+        timeSelecionado = img.dataset.time;
+        document.getElementById("mensagem").innerText = `Você selecionou: ${timeSelecionado}`;
+      });
+    });
+
+    function salvarTime() {
+      if (timeSelecionado) {
+        localStorage.setItem("timeFavorito", timeSelecionado);
+        document.getElementById("mensagem").innerText = `Seu time favorito é: ${timeSelecionado}`;
+      } else {
+        document.getElementById("mensagem").innerText = "Por favor, selecione um time!";
+      }
+    }
+  </script>
+</body>
+</html>

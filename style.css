@@ -1,56 +1,114 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #000000;
-    background-image: url(img/fundo-fifa.png);
-    background-size: cover;
+/* Variáveis CSS globais para consistência em todo o site */
+:root {
+    --primary-color: #eccf26; /* Amarelo principal para títulos, destaques, etc. */
+    --secondary-color: #ff6b35; /* Laranja/Vermelho secundário para detalhes e animações */
+    --dark-background: #0a0a14; /* Cor de fundo mais escura */
+    --light-background: #151525; /* Cor de fundo mais clara para elementos específicos */
+    --text-color-light: #ffffff; /* Cor padrão para texto em fundos escuros */
+    --text-color-dark: #333333; /* Cor padrão para texto em fundos claros */
+    --transition: all 0.3s ease; /* Transição padrão para efeitos de hover/foco */
+    --header-bg: linear-gradient(145deg, #151525, #0a0a14); /* Gradiente para o cabeçalho */
+    --button-bg-hover: #fcbe04; /* Cor de fundo dos botões ao passar o mouse */
+    --main-nav-text-hover: #000000; /* Cor do texto dos botões da navegação principal ao passar o mouse (PRETO) */
+    --table-header-bg: rgba(255, 255, 255, 0.05); /* Fundo do cabeçalho da tabela */
+    --table-row-hover: rgba(255, 255, 255, 0.03); /* Fundo da linha da tabela ao passar o mouse */
+    --gradient-primary: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); /* Gradiente principal para uso geral */
+
+    /* Cores dos times para o cursor e outros elementos temáticos */
+    --psg-red: rgba(255, 0, 85, 0.7);
+    --atletico-red: rgba(255, 59, 59, 0.7);
+    --botafogo-yellow: rgba(255, 204, 0, 0.7);
+    --seattle-blue: rgba(0, 217, 255, 0.7);
+    --fav-team-border: #fcbe04; /* Cor da borda para time favorito selecionado */
 }
 
+/* Estilos Globais do Corpo */
+body {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    background-image: url(img/fundo-fifa.png);
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color-light);
+    overflow-x: hidden; /* Garante que não haja rolagem horizontal no corpo da página */
+}
+
+/* Estilos de Títulos */
 h1 {
-    color: #eccf26;
-    margin-top: -50px;
-    font-family: Arial, Helvetica, sans-serif;
+    color: var(--primary-color);
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+h2, h3 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos do Cabeçalho */
+header {
+    background: var(--header-bg);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    flex-wrap: wrap;
+    position: sticky; /* Sticky header */
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
 }
 
 .logo {
-    margin-left: 45.2%;
+    width: 130px;
+    height: auto;
+    cursor: pointer;
 }
 
-.lista {
-    margin-left: 24%;
-    justify-content: space-between;
-}
-
-.lista ul {
-    align-items: center;
-    width: 100%;
-    max-width: 50%;
-    margin-right: 200%;
+/* Estilos da Lista de Navegação Principal */
+.lista nav ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.lista ul li {
-    list-style: none;
-    display: inline;
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s;
-    margin: 0 5%;
+.lista nav ul li {
+    margin: 0 15px;
 }
 
 .lista a {
-    color: #e6d43b;
+    color: var(--text-color-light);
     font-weight: 500;
     font-size: 1.1em;
     position: relative;
-    padding-bottom: 5px;
+    padding: 10px 20px;
     text-decoration: none;
+    background: linear-gradient(145deg, var(--light-background), var(--dark-background));
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    transition: var(--transition);
+    overflow: hidden; /* Garante que o hover de background cubra tudo */
+    z-index: 1; /* Para garantir que o ::after fique por cima */
 }
 
+/* Efeito Hover do Botão da NAV */
 .lista a:hover,
 .lista a.active {
-    color: #e6d43b;
+    color: var(--main-nav-text-hover); /* Texto PRETO ao passar o mouse/ativo */
+    background: var(--button-bg-hover); /* Fundo DOURADO preenche todo o botão */
+    box-shadow: 0 0 10px 2px var(--button-bg-hover);
+    transform: scale(1.05);
 }
 
 .lista a.active::after {
@@ -62,39 +120,33 @@ h1 {
     height: 3px;
     background-color: rgb(197, 135, 0);
     border-radius: 2px;
-    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    z-index: 2; /* Garante que a linha fique por cima */
 }
 
-.botao {
+/* Estilos do Botão de Menu Hambúrguer */
+.menu-toggle {
+    display: none; /* Esconde por padrão em telas maiores */
+    background: none;
     border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #0000007b;
-    color: rgb(252, 190, 4);
-    border-radius: 10px;
-    padding: 10px;
-    font-weight: 550;
-    box-shadow: 0px 0px 10px 2px #4c6e4427;
-    transition: background-color .3s ease, transform .5s ease;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.botao:hover {
-    background-color: #fcbe04;
-    color: #5c4976;
-    box-shadow: 0px 0px 10px 2px #fcbe04;
-    transform: scale(1.0);
+    font-size: 2rem;
+    color: var(--primary-color);
     cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Garante que fique acima de outros elementos */
+    transition: var(--transition);
 }
 
-.active {
-    color: white;
-    background-color: blue;
-    font-weight: bold;
+.menu-toggle:hover {
+    color: var(--button-bg-hover);
+    transform: scale(1.1);
 }
 
+.menu-toggle:focus {
+    outline: none;
+}
+
+/* Estilos de Menu Dropdown (Manteve, mas não é a navegação principal) */
 .menu {
     position: relative;
     display: flex;
@@ -111,10 +163,12 @@ h1 {
     font-weight: lighter;
     border-radius: 5px;
     text-transform: uppercase;
+    transition: var(--transition);
 }
 
 .menu button:hover {
     color: #aaaaaa;
+    transform: scale(1.05);
 }
 
 .menu-content {
@@ -130,17 +184,907 @@ h1 {
 }
 
 .menu-content a {
-    color: black;
+    color: var(--text-color-dark);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    background-color: transparent;
+    box-shadow: none;
 }
 
 .menu-content a:hover {
     background-color: #aaaaaa;
     border-radius: 5px;
+    transform: none;
 }
 
 .menu:hover .menu-content {
     display: block;
+}
+
+/* Estilos Comuns de Cards e Containers */
+.stats-container, .matches-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.stats-card, .match-card {
+    background: linear-gradient(145deg, var(--light-background), var(--dark-background));
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+    color: var(--text-color-light);
+}
+
+.stats-card:hover, .match-card:hover {
+    transform: translateY(-5px); /* Efeito de elevação sutil no hover */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilos de Tabela (Classificação) */
+.table-container {
+    overflow-x: auto; /* Permite rolagem horizontal em tabelas grandes */
+    margin-bottom: 5%;
+    /* Estilizar scrollbar da tabela para ser discreta */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--primary-color) var(--dark-background); /* Firefox */
+}
+
+/* Estilização da scrollbar da tabela para navegadores WebKit */
+.table-container::-webkit-scrollbar {
+    height: 8px; /* Altura da barra de rolagem horizontal */
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: var(--dark-background);
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+    border: 2px solid var(--dark-background);
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+.standings {
+    width: 100%;
+    min-width: 600px; /* Garante que a tabela não encolha demais, forçando o scrollbar */
+    border-collapse: collapse;
+}
+
+.standings th,
+.standings td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color-light);
+}
+
+.standings th {
+    background-color: var(--table-header-bg);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.standings tr:hover {
+    background-color: var(--table-row-hover);
+}
+
+.team-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.team-name img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+/* Estilos de Gráficos */
+.chart-container {
+    height: 300px;
+    position: relative;
+}
+
+/* Estilos de Partidas */
+.match-date {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.match-teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 30%;
+    text-align: center;
+}
+
+.team img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.team span {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.match-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 40%;
+}
+
+.match-time {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color-light);
+}
+
+.match-venue {
+    font-size: 0.9rem;
+    text-align: center;
+    opacity: 0.7;
+}
+
+/* Estilos da Seção de Times (clubes.html) */
+.line {
+    height: 3px;
+    width: 100px;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
+.glitch {
+    position: relative;
+    color: var(--text-color-light);
+    text-shadow: 0 0 10px var(--primary-color);
+    font-size: 60px;
+    text-align: center;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--secondary-color);
+    animation: glitch-animation 3s infinite linear alternate-reverse;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: 2px 0 var(--primary-color);
+    animation: glitch-animation 2s infinite linear alternate-reverse;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch-animation {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.teams {
+    position: relative;
+    padding: 40px 0;
+}
+
+.teams::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/pattern.png');
+    background-size: 200px;
+    opacity: 0.05;
+    z-index: 0;
+}
+
+/* Container dos times com rolagem horizontal (carrosel) */
+.teams-container {
+    display: flex;
+    flex-wrap: nowrap; /* Impede que os itens quebrem para a próxima linha */
+    overflow-x: auto; /* Habilita a rolagem horizontal quando necessário */
+    -webkit-overflow-scrolling: touch; /* Melhor rolagem em dispositivos iOS */
+    padding: 0 20px; /* Adiciona padding nas laterais para melhor visualização */
+    gap: 30px; /* Espaço entre os cards */
+    max-width: 100%;
+    box-sizing: border-box;
+    justify-content: flex-start; /* Alinha os itens ao início do contêiner */
+    /* Estilizar scrollbar para ser discreta */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--primary-color) var(--dark-background); /* Firefox */
+}
+
+/* Estilização da scrollbar para navegadores WebKit (Chrome, Safari) */
+.teams-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.teams-container::-webkit-scrollbar-track {
+    background: var(--dark-background);
+    border-radius: 10px;
+}
+
+.teams-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+    border: 2px solid var(--dark-background);
+}
+
+.teams-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+
+.team-card {
+    flex: 0 0 300px; /* Define um tamanho fixo para cada card e impede que eles cresçam ou encolham */
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+}
+
+.team-card .team-front,
+.team-card .team-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.team-card .team-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    text-align: center;
+    background: linear-gradient(145deg, var(--light-background), var(--dark-background));
+}
+
+.team-card .team-back {
+    transform: rotateY(180deg);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(145deg, var(--light-background), var(--dark-background));
+}
+
+.team-card:hover .team-front {
+    transform: rotateY(180deg);
+}
+
+.team-card:hover .team-back {
+    transform: rotateY(0);
+}
+
+.team-logo {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    padding: 20px;
+    transition: var(--transition);
+    background-color: var(--dark-background);
+}
+
+.team-logo img {
+    max-width: 85%;
+    max-height: 85%;
+    transition: var(--transition);
+}
+
+.team-card:hover .team-logo img {
+    transform: scale(1.1);
+}
+
+.team-front h3, .team-back h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.team-info {
+    margin-bottom: 20px;
+}
+
+.team-info p {
+    margin-bottom: 10px;
+}
+
+.team-btn {
+    display: block;
+    padding: 12px 0;
+    background: var(--gradient-primary);
+    color: #fff;
+    text-align: center;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.team-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 0, 85, 0.3);
+}
+
+strong {
+    color: var(--primary-color);
+}
+
+.Infos {
+    color: var(--text-color-light);
+}
+
+.country {
+    color: var(--primary-color);
+}
+
+/* Estilos da Seção de Jogos (jogos.html) */
+.duo {
+    display: flex;
+    flex-wrap: nowrap; /* Impede que os itens quebrem para a próxima linha */
+    overflow-x: auto; /* Habilita a rolagem horizontal quando necessário */
+    -webkit-overflow-scrolling: touch; /* Melhor rolagem em dispositivos iOS */
+    justify-content: center; /* Centraliza os itens no contêiner */
+    gap: 40px; /* Espaço entre os itens */
+    margin-top: 50px;
+    padding: 0 20px; /* Adiciona padding para responsividade */
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilização da scrollbar para navegadores WebKit (Chrome, Safari) */
+.duo::-webkit-scrollbar {
+    height: 8px;
+}
+
+.duo::-webkit-scrollbar-track {
+    background: var(--dark-background);
+    border-radius: 10px;
+}
+
+.duo::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+    border: 2px solid var(--dark-background);
+}
+
+.duo::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+.roblox, .rivals, .fc {
+    flex: 0 0 300px; /* Define um tamanho base para cada item para rolagem */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.roblox img, .rivals img, .fc img {
+    border-radius: 10%;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: var(--transition);
+}
+
+.roblox img:hover, .rivals img:hover, .fc img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Estilos do Rodapé */
+.footer {
+    background: linear-gradient(135deg, #0a0a14 0%, #151525 50%, #1a1a2e 100%);
+    color: #ffffff;
+    padding: 60px 0 20px;
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #eccf26, #ff6b35, #eccf26);
+    animation: footerGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes footerGlow {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.footer-section {
+    padding: 20px;
+}
+
+.footer-section h3 {
+    color: #eccf26;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    position: relative;
+    font-weight: 600;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #eccf26, #ff6b35);
+    border-radius: 2px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    width: 60px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(236, 207, 38, 0.3));
+}
+
+.footer-logo-text {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #eccf26;
+    text-shadow: 0 0 10px rgba(236, 207, 38, 0.3);
+}
+
+.footer-description {
+    color: #cccccc;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav li {
+    margin-bottom: 12px;
+}
+
+.footer-nav a {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 20px;
+}
+
+.footer-nav a::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--primary-color);
+    padding-left: 25px;
+    text-shadow: 0 0 5px rgba(236, 207, 38, 0.5);
+}
+
+.footer-nav a:hover::before {
+    transform: translateX(3px);
+    text-shadow: 0 0 8px rgba(236, 207, 38, 0.8);
+}
+.contact-info {
+    margin-top: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    color: #cccccc;
+    font-size: 0.95rem;
+}
+
+.contact-item i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.footer-bottom {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999999;
+    font-size: 0.9rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer-heart {
+    color: #ff6b35;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+
+/* Efeito de Animação do Cursor */
+.cursor {
+    z-index: 999;
+    position: fixed;
+    background: var(--primary-color); /* Cor inicial, será animada */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 20px var(--primary-color),
+                0 0 60px var(--primary-color),
+                0 0 100px var(--primary-color);
+    animation: team-colors-cycle 8s infinite ease-in-out; /* Nova animação de cores específicas */
+    transform: translate(-50%, -50%); /* Centraliza o cursor */
+}
+
+@keyframes team-colors-cycle {
+    0% { background-color: var(--psg-red); box-shadow: 0 0 20px var(--psg-red), 0 0 60px var(--psg-red), 0 0 100px var(--psg-red); }
+    25% { background-color: var(--atletico-red); box-shadow: 0 0 20px var(--atletico-red), 0 0 60px var(--atletico-red), 0 0 100px var(--atletico-red); }
+    50% { background-color: var(--botafogo-yellow); box-shadow: 0 0 20px var(--botafogo-yellow), 0 0 60px var(--botafogo-yellow), 0 0 100px var(--botafogo-yellow); }
+    75% { background-color: var(--seattle-blue); box-shadow: 0 0 20px var(--seattle-blue), 0 0 60px var(--seattle-blue), 0 0 100px var(--seattle-blue); }
+    100% { background-color: var(--psg-red); box-shadow: 0 0 20px var(--psg-red), 0 0 60px var(--psg-red), 0 0 100px var(--psg-red); }
+}
+
+.cursor::before {
+    content: '';
+    position: absolute;
+    background: currentColor; /* Herda a cor do pai para consistência */
+    width: 50px;
+    height: 50px;
+    opacity: 0.2;
+    transform: translate(-30%, -30%);
+    border-radius: 50%;
+}
+
+/* Estilos para o novo módulo de seleção de time favorito (indexstorage.html) */
+.match-card.fav-selector { /* Renomeado para evitar conflito com match-card existente */
+    width: 80%;
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    color: var(--text-color-light); /* Garante texto visível */
+}
+
+.match-card.fav-selector h2 {
+    color: var(--primary-color); /* Usa variável de cor primária */
+    margin-bottom: 30px;
+}
+
+.grupob-times {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite quebrar para múltiplas linhas em telas menores */
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.grupob-times img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    background-color: var(--light-background); /* Usa variável de fundo claro */
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    border: 3px solid transparent;
+}
+
+.grupob-times img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px var(--button-bg-hover); /* Usa cor dourada de hover */
+    background-color: var(--button-bg-hover);
+}
+
+.grupob-times img.selecionado {
+    border: 3px solid var(--fav-team-border); /* Borda dourada para selecionado */
+}
+
+.botao.fav-selector-btn { /* Nova classe para o botão deste módulo */
+    border: none;
+    background-color: rgba(0, 0, 0, 0.67); /* Adapta o fundo */
+    color: var(--text-color-light);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 550;
+    font-size: 16px;
+    box-shadow: 0px 0px 10px 2px rgba(76, 110, 68, 0.15); /* Sombra mais sutil */
+    transition: background-color .3s ease, transform .3s ease, color .3s ease;
+    cursor: pointer;
+}
+
+.botao.fav-selector-btn:hover {
+    background-color: var(--button-bg-hover);
+    color: var(--main-nav-text-hover); /* Texto preto no hover */
+    box-shadow: 0px 0px 10px 2px var(--button-bg-hover);
+    transform: scale(1.05);
+}
+
+#mensagem {
+    margin-top: 25px;
+    font-size: 1.2rem;
+    color: var(--primary-color); /* Usa cor primária para mensagens */
+    font-weight: bold;
+}
+
+/* Responsividade Geral */
+/* Telas médias (e.g., tablets em modo paisagem, laptops pequenos) */
+@media (max-width: 992px) {
+    .lista nav ul {
+        justify-content: space-around;
+    }
+    .lista nav ul li {
+        margin: 0 10px;
+    }
+    .stats-container, .matches-container, .footer-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        padding: 0 15px;
+    }
+    /* Para os contêineres de rolagem horizontal, garantimos que eles ocupem 100% */
+    .teams-container, .duo {
+        padding: 0 10px;
+    }
+    .match-card.fav-selector {
+        width: 90%; /* Ajusta largura em telas médias */
+        margin: 50px auto;
+    }
+}
+
+/* Telas menores (e.g., tablets em modo retrato, celulares grandes) */
+@media (max-width: 768px) {
+    /* Menu Hambúrguer */
+    .menu-toggle {
+        display: block;
+    }
+    .lista nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--header-bg);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    }
+    .lista nav.active {
+        max-height: 300px;
+    }
+    .lista nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+    }
+    .lista nav ul li {
+        margin: 10px 0;
+        width: 80%;
+    }
+    .lista a {
+        width: 100%;
+    }
+
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .logo-link {
+        margin: 0;
+    }
+    .stats-container, .matches-container, .footer-container {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+    }
+    .stats-card, .match-card {
+        padding: 20px;
+    }
+    .match-teams {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .team, .match-info {
+        width: 100%;
+    }
+    /* Ajustes para carrossel de times/jogos em telas menores */
+    .teams-container, .duo {
+        padding: 0 10px;
+    }
+    .team-card {
+        height: 380px;
+        flex: 0 0 280px;
+    }
+    .glitch {
+        font-size: 45px;
+    }
+    .line {
+        width: 80px;
+    }
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 15px;
+    }
+    .footer {
+        padding: 40px 0 20px;
+    }
+    .footer-section {
+        text-align: center;
+    }
+    .footer-nav a {
+        padding-left: 0;
+    }
+    .footer-nav a::before {
+        display: none;
+    }
+    .match-card.fav-selector {
+        padding: 20px;
+    }
+    .grupob-times img {
+        width: 90px;
+        height: 90px;
+    }
+    .botao.fav-selector-btn {
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+    #mensagem {
+        font-size: 1rem;
+    }
+    .standings {
+        min-width: unset; /* Remove min-width para celular, deixa overflow-x:auto lidar */
+    }
+}
+
+/* Telas muito pequenas (e.g., celulares antigos, modo paisagem) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    .logo {
+        width: 100px;
+    }
+    .lista a {
+        font-size: 1em;
+        padding: 8px 15px;
+    }
+    .cursor {
+        width: 15px;
+        height: 15px;
+    }
+    .cursor::before {
+        width: 40px;
+        height: 40px;
+    }
+    .glitch {
+        font-size: 35px;
+    }
+    .team-logo {
+        width: 80px;
+        height: 80px;
+    }
+    .team-front h3, .team-back h3 {
+        font-size: 1.5rem;
+    }
+    .team-info p {
+        font-size: 0.9rem;
+    }
+    .footer-logo {
+        justify-content: center;
+    }
+    .footer-logo img {
+        width: 50px;
+    }
+    .footer-logo-text {
+        font-size: 1.4rem;
+    }
+    .grupob-times {
+        gap: 15px;
+    }
+    .grupob-times img {
+        width: 70px;
+        height: 70px;
+        padding: 8px;
+    }
 }
