@@ -1,374 +1,110 @@
-/* Variáveis CSS globais para consistência em todo o site */
+/*
+ * NOME DO ARQUIVO: style.css
+ * DESCRIÇÃO: Folha de estilos principal e unificada para todo o site do Mundial de Clubes 2025.
+ * Contém todas as estilizações, desde variáveis globais e resets até componentes
+ * específicos de cada página e regras de responsividade.
+ * VERSÃO: 2.1 (Correção na animação 'glitch')
+ */
+
+/* -------------------
+ * FONTES E VARIÁVEIS GLOBAIS
+ * ------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 :root {
-    --primary-color: #eccf26; /* Amarelo principal para títulos, destaques, etc. */
-    --secondary-color: #ff6b35; /* Laranja/Vermelho secundário para detalhes e animações */
-    --dark-background: #0a0a14; /* Cor de fundo mais escura */
-    --light-background: #151525; /* Cor de fundo mais clara para elementos específicos */
-    --text-color-light: #ffffff; /* Cor padrão para texto em fundos escuros */
-    --text-color-dark: #333333; /* Cor padrão para texto em fundos claros */
-    --transition: all 0.3s ease; /* Transição padrão para efeitos de hover/foco */
-    --header-bg: linear-gradient(145deg, #151525, #0a0a14); /* Gradiente para o cabeçalho */
-    --button-bg-hover: #fcbe04; /* Cor de fundo dos botões ao passar o mouse */
-    --main-nav-text-hover: #000000; /* Cor do texto dos botões da navegação principal ao passar o mouse (PRETO) */
-    --table-header-bg: rgba(255, 255, 255, 0.05); /* Fundo do cabeçalho da tabela */
-    --table-row-hover: rgba(255, 255, 255, 0.03); /* Fundo da linha da tabela ao passar o mouse */
-    --gradient-primary: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); /* Gradiente principal para uso geral */
-
-    /* Cores dos times para o cursor e outros elementos temáticos */
-    --psg-red: rgba(255, 0, 85, 0.7);
-    --atletico-red: rgba(255, 59, 59, 0.7);
-    --botafogo-yellow: rgba(255, 204, 0, 0.7);
-    --seattle-blue: rgba(0, 217, 255, 0.7);
-    --fav-team-border: #fcbe04; /* Cor da borda para time favorito selecionado */
+    --cor-primaria: #eccf26; 
+    --cor-secundaria: #ff6b35; 
+    --fundo-escuro: #0a0a14; 
+    --fundo-claro: #151525; 
+    --fundo-header: rgba(10, 10, 20, 0.8);
+    --texto-claro: #f0f0f0; 
+    --texto-escuro: #111111;
+    --gradiente-card: linear-gradient(145deg, var(--fundo-claro), var(--fundo-escuro));
+    --gradiente-destaque: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria)); 
+    --borda-selecao: #fcbe04;
+    --sombra-card: rgba(0, 0, 0, 0.4);
+    --transicao-rapida: all 0.2s ease-in-out;
+    --transicao-media: all 0.4s ease-in-out;
 }
 
-/* Estilos Globais do Corpo */
+/* -------------------
+ * ESTILOS GLOBAIS E RESET
+ * ------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: 'Arial', 'Helvetica', sans-serif;
-    background-image: url(img/fundo-fifa.png);
+    font-family: 'Poppins', 'Arial', sans-serif;
+    background-color: var(--fundo-escuro);
+    background-image: url('img/fundo-fifa.png');
     background-size: cover;
+    background-position: center;
     background-attachment: fixed;
-    margin: 0;
-    padding: 0;
-    color: var(--text-color-light);
-    overflow-x: hidden; /* Garante que não haja rolagem horizontal no corpo da página */
+    color: var(--texto-claro);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Estilos de Títulos */
-h1 {
-    color: var(--primary-color);
-    font-family: 'Arial', 'Helvetica', sans-serif;
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 30px;
-}
-h2, h3 {
-    color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 20px;
+main {
+    padding: 2rem 1rem;
 }
 
-/* Estilos do Cabeçalho */
-header {
-    background: var(--header-bg);
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    flex-wrap: wrap;
-    position: sticky; /* Header fixo no topo */
-    top: 0;
-    z-index: 1000;
+a {
+    color: var(--cor-primaria);
+    text-decoration: none;
 }
 
-.logo-link {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    width: 130px;
+img {
+    max-width: 100%;
     height: auto;
-    cursor: pointer;
-}
-
-/* Estilos da Lista de Navegação Principal (Desktop) */
-.lista {
-    flex-grow: 1; /* Permite que o contêiner da lista ocupe espaço disponível */
-    display: flex; /* Para flexbox alinhamento do nav */
-    justify-content: flex-end; /* Alinha a navegação à direita em desktop */
-}
-
-.lista nav {
-    /* Transição para o menu hambúrguer (mobile) */
-    transition: max-height 0.3s ease-out;
-}
-
-.lista nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex; /* Mantém flex para desktop */
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.lista nav ul li {
-    margin: 0 15px;
-}
-
-.lista a {
-    color: var(--text-color-light);
-    font-weight: 500;
-    font-size: 1.1em;
-    position: relative;
-    padding: 10px 20px;
-    text-decoration: none;
-    background: linear-gradient(145deg, var(--light-background), var(--dark-background));
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    transition: var(--transition);
-    overflow: hidden;
-    z-index: 1;
-}
-
-/* Efeito Hover e Ativo do Botão da NAV */
-.lista a:hover,
-.lista a.active {
-    color: var(--main-nav-text-hover); /* Texto PRETO ao passar o mouse/ativo */
-    background: var(--button-bg-hover); /* Fundo DOURADO preenche todo o botão */
-    box-shadow: 0 0 10px 2px var(--button-bg-hover);
-    transform: scale(1.05);
-}
-
-.lista a.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: rgb(197, 135, 0);
-    border-radius: 2px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    z-index: 2;
-}
-
-/* Estilos do Botão de Menu Hambúrguer */
-.menu-toggle {
-    display: none; /* Esconde por padrão em telas maiores */
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: var(--primary-color);
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1001; /* Garante que fique acima de outros elementos */
-    transition: var(--transition);
-    margin-left: auto; /* Empurra para o canto direito em telas menores */
-}
-
-.menu-toggle:hover {
-    color: var(--button-bg-hover);
-    transform: scale(1.1);
-}
-
-.menu-toggle:focus {
-    outline: none;
-}
-
-/* Estilos de Menu Dropdown (se aplicável, para elementos como dropdowns) */
-/* Mantido caso haja uso futuro, mas não afeta a navegação principal atual */
-.menu {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.menu button {
-    background-color: #e62429;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: lighter;
-    border-radius: 5px;
-    text-transform: uppercase;
-    transition: var(--transition);
-}
-
-.menu button:hover {
-    color: #aaaaaa;
-    transform: scale(1.05);
-}
-
-.menu-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: -70%;
-    background-color: white;
-    min-width: 150px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 5px;
-}
-
-.menu-content a {
-    color: var(--text-color-dark);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    background-color: transparent;
-    box-shadow: none;
-}
-
-.menu-content a:hover {
-    background-color: #aaaaaa;
-    border-radius: 5px;
-    transform: none;
-}
-
-.menu:hover .menu-content {
     display: block;
 }
 
-/* Estilos Comuns de Cards e Containers */
-.stats-container, .matches-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    position: relative;
-    z-index: 1;
+/* -------------------
+ * COMPONENTES REUTILIZÁVEIS
+ * ------------------- */
+.container {
     max-width: 1200px;
-    margin: 50px auto;
-    padding: 0 20px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-.stats-card, .match-card {
-    background: linear-gradient(145deg, var(--light-background), var(--dark-background));
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--gradiente-card);
     border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: var(--transition);
-    color: var(--text-color-light);
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px var(--sombra-card);
+    transition: var(--transicao-media);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.stats-card:hover, .match-card:hover {
-    transform: translateY(-5px); /* Efeito de elevação sutil no hover */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px var(--sombra-card);
 }
 
-/* Estilos de Tabela (Classificação) - Adaptada para Responsividade sem Scrollbar */
-.table-container {
-    margin-bottom: 5%;
-    /* Removido overflow-x: auto; para que a tabela se adapte */
-}
-
-.standings {
-    width: 100%;
-    border-collapse: collapse;
-    /* Removido min-width para celular */
-}
-
-.standings th,
-.standings td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-color-light);
-    white-space: nowrap; /* Evita que o texto quebre nas colunas */
-}
-
-.standings th {
-    background-color: var(--table-header-bg);
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
-
-.standings tr:hover {
-    background-color: var(--table-row-hover);
-}
-
-.team-name {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-align: left;
-}
-
-.team-name img {
-    width: 25px;
-    height: 25px;
-    object-fit: contain;
-}
-
-/* Estilos de Gráficos */
-.chart-container {
-    height: 300px;
-    position: relative;
-}
-
-/* Estilos de Partidas */
-.match-date {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: var(--primary-color);
-    text-align: center;
-}
-
-.match-teams {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.team {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    width: 30%;
-    text-align: center;
-}
-
-.team img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-}
-
-.team span {
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-
-.match-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    width: 40%;
-}
-
-.match-time {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-color-light);
-}
-
-.match-venue {
-    font-size: 0.9rem;
-    text-align: center;
-    opacity: 0.7;
-}
-
-/* Estilos da Seção de Times (clubes.html) */
-.line {
-    height: 3px;
-    width: 100px;
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 10px;
-    margin: 20px auto;
-}
-
+/* EFEITO GLITCH - Animação Contínua */
 .glitch {
     position: relative;
-    color: var(--text-color-light);
-    text-shadow: 0 0 10px var(--primary-color);
-    font-size: 60px;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--texto-claro);
+    text-shadow: 0 0 10px rgba(236, 207, 38, 0.5);
     text-align: center;
-    font-family: 'Arial', 'Helvetica', sans-serif;
+    margin-bottom: 0;
 }
 
-.glitch::before,
+.glitch::before, 
 .glitch::after {
     content: attr(data-text);
     position: absolute;
@@ -376,258 +112,163 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
+    background: transparent;
+    z-index: -1;
 }
 
 .glitch::before {
     left: 2px;
-    text-shadow: -2px 0 var(--secondary-color);
-    animation: glitch-animation 3s infinite linear alternate-reverse;
-    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    text-shadow: -2px 0 var(--cor-secundaria);
+    /* Animação contínua e mais sutil */
+    animation: glitch-anim-1 3s infinite linear alternate-reverse;
 }
 
 .glitch::after {
     left: -2px;
-    text-shadow: 2px 0 var(--primary-color);
-    animation: glitch-animation 2s infinite linear alternate-reverse;
-    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    text-shadow: 2px 0 var(--cor-primaria);
+    /* Animação contínua e mais sutil */
+    animation: glitch-anim-2 4s infinite linear alternate-reverse;
 }
 
-@keyframes glitch-animation {
+/* Keyframes para a animação contínua */
+@keyframes glitch-anim-1 {
+    0% { clip-path: polygon(0 2%, 100% 2%, 100% 40%, 0 40%); }
+    25% { clip-path: polygon(0 50%, 100% 50%, 100% 90%, 0 90%); }
+    50% { clip-path: polygon(0 15%, 100% 15%, 100% 25%, 0 25%); }
+    75% { clip-path: polygon(0 80%, 100% 80%, 100% 70%, 0 70%); }
+    100% { clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%); }
+}
+@keyframes glitch-anim-2 {
     0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
+    50% { transform: translate(-2px, 1px); }
     100% { transform: translate(0); }
 }
 
-.teams {
-    position: relative;
-    padding: 40px 0;
-}
 
-.teams::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../img/pattern.png');
-    background-size: 200px;
-    opacity: 0.05;
-    z-index: 0;
-}
-
-/* Container dos times (Clubes) - Grid Responsivo para mostrar lado a lado ou quebrar */
-.teams-container {
-    display: grid;
-    /* Tenta 4 colunas em telas muito grandes, 3 em grandes, 2 em médias, 1 em pequenas */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Min-width 250px para cada card */
-    gap: 30px;
-    position: relative;
-    z-index: 1;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    box-sizing: border-box;
-    overflow-x: hidden; /* Garante que não haverá scrollbar horizontal neste container */
-}
-
-
-.team-card {
-    height: 400px;
-    perspective: 1000px;
-    cursor: pointer;
-    position: relative;
-    /* Removido transform: translateY para não elevar ao passar o mouse */
-}
-
-/* Removido transform: translateY de team-card:hover */
-
-.team-card .team-front,
-.team-card .team-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.team-card .team-front {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    text-align: center;
-    background: linear-gradient(145deg, var(--light-background), var(--dark-background));
-}
-
-.team-card .team-back {
-    transform: rotateY(180deg);
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: linear-gradient(145deg, var(--light-background), var(--dark-background));
-}
-
-.team-card:hover .team-front {
-    transform: rotateY(180deg);
-}
-
-.team-card:hover .team-back {
-    transform: rotateY(0);
-}
-
-.team-logo {
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    border-radius: 50%;
-    padding: 20px;
-    transition: var(--transition);
-    background-color: var(--dark-background);
-}
-
-.team-logo img {
-    max-width: 85%;
-    max-height: 85%;
-    transition: var(--transition);
-}
-
-.team-card:hover .team-logo img {
-    transform: scale(1.1);
-}
-
-.team-front h3, .team-back h3 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-}
-
-.team-info {
-    margin-bottom: 20px;
-}
-
-.team-info p {
-    margin-bottom: 10px;
-}
-
-.team-btn {
-    display: block;
-    padding: 12px 0;
-    background: var(--gradient-primary);
-    color: #fff;
-    text-align: center;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: var(--transition);
-    text-decoration: none;
-}
-
-.team-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 0, 85, 0.3);
-}
-
-strong {
-    color: var(--primary-color);
-}
-
-.Infos {
-    color: var(--text-color-light);
-}
-
-.country {
-    color: var(--primary-color);
-}
-
-/* Estilos da Seção de Jogos (jogos.html) */
-.duo {
-    display: flex;
-    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
-    justify-content: center; /* Centraliza os itens */
-    gap: 40px;
-    margin-top: 50px;
-    padding: 0 20px;
-    max-width: 100%;
-    box-sizing: border-box;
-    overflow-x: hidden; /* Garante que não haverá scrollbar horizontal neste container */
-}
-
-.roblox, .rivals, .fc {
-    flex: 0 0 300px; /* Mantém um tamanho base */
-    text-align: center;
-    margin-bottom: 30px;
-    flex-basis: calc(50% - 20px); /* 2 por linha em telas médias */
-    max-width: 300px; /* Limite máximo para evitar que cresçam demais */
-}
-
-
-.roblox img, .rivals img, .fc img {
-    border-radius: 10%;
-    max-width: 100%;
-    height: auto;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transition: var(--transition);
-}
-
-.roblox img:hover, .rivals img:hover, .fc img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-}
-
-/* Estilos do Rodapé */
-.footer {
-    background: linear-gradient(135deg, #0a0a14 0%, #151525 50%, #1a1a2e 100%);
-    color: #ffffff;
-    padding: 60px 0 20px;
-    margin-top: 80px;
-    position: relative;
-    overflow: hidden;
-}
-
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+.linha-destaque {
     height: 4px;
-    background: linear-gradient(90deg, #eccf26, #ff6b35, #eccf26);
-    animation: footerGlow 3s ease-in-out infinite alternate;
+    width: 80px;
+    background: var(--gradiente-destaque);
+    border: none;
+    border-radius: 10px;
+    margin: 1rem auto 3rem auto;
 }
 
-@keyframes footerGlow {
-    0% { opacity: 0.7; }
-    100% { opacity: 1; }
+/* -------------------
+ * CURSOR PERSONALIZADO
+ * ------------------- */
+.cursor {
+    z-index: 9999;
+    position: fixed;
+    background: var(--cor-primaria);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 20px var(--cor-primaria);
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out;
+    display: none; /* Desabilitado por padrão em telas touch */
+}
+@media (hover: hover) and (pointer: fine) {
+    .cursor { display: block; }
+}
+
+/* O restante do CSS permanece o mesmo... */
+/* -------------------
+ * CABEÇALHO E NAVEGAÇÃO
+ * ------------------- */
+header {
+    background: var(--fundo-header);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-link {
+    flex-shrink: 0;
+}
+
+.logo {
+    width: 120px;
+    transition: var(--transicao-rapida);
+}
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-principal nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-principal a.botao {
+    color: var(--texto-claro);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    position: relative;
+    transition: var(--transicao-rapida);
+}
+
+.nav-principal a.botao:hover {
+    background: var(--cor-primaria);
+    color: var(--texto-escuro);
+    transform: translateY(-2px);
+}
+
+.nav-principal a.botao.active {
+    background: var(--cor-primaria);
+    color: var(--texto-escuro);
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(236, 207, 38, 0.4);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--cor-primaria);
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* -------------------
+ * RODAPÉ
+ * ------------------- */
+.footer {
+    background: var(--gradiente-card);
+    color: #ccc;
+    padding: 4rem 0 2rem;
+    margin-top: 5rem;
+    border-top: 4px solid transparent;
+    border-image: var(--gradiente-destaque) 1;
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
-}
-
-.footer-section {
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
 }
 
 .footer-section h3 {
-    color: #eccf26;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
+    color: var(--cor-primaria);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
     position: relative;
+    text-align: left;
     font-weight: 600;
 }
 
@@ -636,498 +277,373 @@ strong {
     position: absolute;
     bottom: -8px;
     left: 0;
-    width: 50px;
+    width: 40px;
     height: 3px;
-    background: linear-gradient(90deg, #eccf26, #ff6b35);
+    background: var(--gradiente-destaque);
     border-radius: 2px;
 }
 
 .footer-logo {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
-.footer-logo img {
-    width: 60px;
-    height: auto;
-    filter: drop-shadow(0 0 10px rgba(236, 207, 38, 0.3));
-}
+.footer-logo img { width: 50px; }
+.footer-logo-text { font-size: 1.5rem; font-weight: bold; }
+.footer-description { line-height: 1.7; font-size: 0.9rem; }
 
-.footer-logo-text {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #eccf26;
-    text-shadow: 0 0 10px rgba(236, 207, 38, 0.3);
-}
-
-.footer-description {
-    color: #cccccc;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    font-size: 0.95rem;
-}
-
-.footer-nav {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-nav li {
-    margin-bottom: 12px;
-}
-
+.footer-nav { list-style: none; }
+.footer-nav li { margin-bottom: 0.8rem; }
 .footer-nav a {
-    color: #cccccc;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    position: relative;
-    padding-left: 20px;
+    color: #ccc;
+    transition: var(--transicao-rapida);
 }
-
-.footer-nav a::before {
-    content: '▶';
-    position: absolute;
-    left: 0;
-    color: var(--primary-color);
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-}
-
-.footer-nav a:hover {
-    color: var(--primary-color);
-    padding-left: 25px;
-    text-shadow: 0 0 5px rgba(236, 207, 38, 0.5);
-}
-
-.footer-nav a:hover::before {
-    transform: translateX(3px);
-    text-shadow: 0 0 8px rgba(236, 207, 38, 0.8);
-}
-.contact-info {
-    margin-top: 20px;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 15px;
-    color: #cccccc;
-    font-size: 0.95rem;
-}
-
-.contact-item i {
-    color: var(--primary-color);
-    font-size: 1.1rem;
-    width: 20px;
-    text-align: center;
-}
+.footer-nav a:hover { color: var(--cor-primaria); padding-left: 5px; }
 
 .footer-bottom {
-    margin-top: 50px;
-    padding-top: 30px;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #999999;
+    text-align: center;
+    color: #999;
     font-size: 0.9rem;
 }
 
-.footer-bottom p {
-    margin: 0;
+.footer-heart { color: var(--cor-secundaria); animation: heartbeat 1.5s infinite ease-in-out; }
+@keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+
+
+/* -------------------
+ * PÁGINA: INÍCIO (index.html)
+ * ------------------- */
+.standings {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
 }
-
-.footer-heart {
-    color: #ff6b35;
-    animation: heartbeat 1.5s ease-in-out infinite;
+.standings th, .standings td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+.standings th {
+    background-color: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
 }
-
-
-/* Efeito de Animação do Cursor */
-.cursor {
-    z-index: 999;
-    position: fixed;
-    background: var(--primary-color); /* Cor inicial, será animada */
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    pointer-events: none;
-    box-shadow: 0 0 20px var(--primary-color),
-                0 0 60px var(--primary-color),
-                0 0 100px var(--primary-color);
-    animation: team-colors-cycle 8s infinite ease-in-out; /* Nova animação de cores específicas */
-    transform: translate(-50%, -50%); /* Centraliza o cursor */
+.standings tbody tr:hover { background-color: rgba(255, 255, 255, 0.03); }
+.team-name {
+    display:flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    font-weight: 500;
 }
+.team-name img { width: 50px; height: 50px; object-fit: contain; }
 
-@keyframes team-colors-cycle {
-    0% { background-color: var(--psg-red); box-shadow: 0 0 20px var(--psg-red), 0 0 60px var(--psg-red), 0 0 100px var(--psg-red); }
-    25% { background-color: var(--atletico-red); box-shadow: 0 0 20px var(--atletico-red), 0 0 60px var(--atletico-red), 0 0 100px var(--atletico-red); }
-    50% { background-color: var(--botafogo-yellow); box-shadow: 0 0 20px var(--botafogo-yellow), 0 0 60px var(--botafogo-yellow), 0 0 100px var(--botafogo-yellow); }
-    75% { background-color: var(--seattle-blue); box-shadow: 0 0 20px var(--seattle-blue), 0 0 60px var(--seattle-blue), 0 0 100px var(--seattle-blue); }
-    100% { background-color: var(--psg-red); box-shadow: 0 0 20px var(--psg-red), 0 0 60px var(--psg-red), 0 0 100px var(--psg-red); }
+.match-card .match-date {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--cor-primaria);
+    text-align: center;
 }
-
-.cursor::before {
-    content: '';
-    position: absolute;
-    background: currentColor; /* Herda a cor do pai para consistência */
+.match-teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.match-teams .team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100px;
+}
+.match-teams .team img {
     width: 50px;
     height: 50px;
-    opacity: 0.2;
-    transform: translate(-30%, -30%);
-    border-radius: 50%;
+    object-fit: contain;
 }
+.match-teams .team span { font-weight: 600; }
+.match-info { text-align: center; }
+.match-time { font-size: 1.5rem; font-weight: 700; }
+.match-venue { font-size: 0.85rem; opacity: 0.7; }
 
-/* Estilos para o novo módulo de seleção de time favorito (favorito.html) */
-.match-card.fav-selector {
-    width: 80%;
-    max-width: 900px;
-    margin: 80px auto;
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.7);
+/* -------------------
+ * PÁGINA: CLUBES (clubes.html)
+ * ------------------- */
+.teams-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    perspective: 1500px;
+}
+.team-card {
+    height: 380px;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+.team-card:hover {
+    transform: rotateY(180deg);
+}
+.team-front, .team-back {
+    position: absolute;
+    width: 100%; height: 100%;
+    backface-visibility: hidden;
     border-radius: 15px;
+    background: var(--gradiente-card);
+    box-shadow: 0 10px 30px var(--sombra-card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    color: var(--text-color-light);
+}
+.team-back {
+    transform: rotateY(180deg);
+    justify-content: space-around;
+}
+.team-logo img {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 1.5rem;
+    object-fit: contain;
+}
+.team-front h3, .team-back h3 { font-size: 1.5rem; }
+.team-front .country { color: var(--cor-primaria); font-weight: 400; }
+.team-info p { margin-bottom: 0.75rem; font-size: 0.9rem; }
+.team-info strong { color: var(--cor-primaria); font-weight: 600; }
+.team-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--gradiente-destaque);
+    color: white;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transicao-rapida);
+}
+.team-btn:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4); }
+.chart-container { height: 350px; padding: 1rem 0; }
+
+/* -------------------
+ * PÁGINA: JOGUE (jogos.html)
+ * ------------------- */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+.game-card img {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--sombra-card);
+    transition: var(--transicao-media);
+}
+.game-card a:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--cor-primaria);
 }
 
-.match-card.fav-selector h2 {
-    color: var(--primary-color);
-    margin-bottom: 30px;
+/* -------------------
+ * PÁGINA: FAVORITO (favorito.html)
+ * ------------------- */
+.fav-selector-card {
+    max-width: 900px;
+    margin: 3rem auto;
+    text-align: center;
 }
 
-.grupob-times {
+.fav-selector-card p {
+    max-width: 600px;
+    margin: 1rem auto 0;
+    opacity: 0.8;
+}
+
+.fav-teams-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 30px;
-    margin-bottom: 30px;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
 }
-
-.grupob-times img {
+.fav-teams-container img {
     width: 120px;
     height: 120px;
     object-fit: contain;
-    background-color: var(--light-background);
-    padding: 15px;
+    background: var(--fundo-claro);
+    padding: 1rem;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    transition: var(--transicao-rapida);
     cursor: pointer;
     border: 3px solid transparent;
 }
-
-.grupob-times img:hover {
+.fav-teams-container img:hover {
     transform: scale(1.1);
-    box-shadow: 0 10px 25px var(--button-bg-hover);
-    background-color: var(--button-bg-hover);
+    border-color: rgba(252, 190, 4, 0.5);
 }
-
-.grupob-times img.selecionado {
-    border: 3px solid var(--fav-team-border);
+.fav-teams-container img.selecionado {
+    border-color: var(--borda-selecao);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--borda-selecao);
 }
-
 .botao.fav-selector-btn {
     border: none;
-    background-color: rgba(0, 0, 0, 0.67);
-    color: var(--text-color-light);
+    background: var(--gradiente-destaque);
+    color: white;
     border-radius: 10px;
-    padding: 10px 20px;
-    font-weight: 550;
-    font-size: 16px;
-    box-shadow: 0px 0px 10px 2px rgba(76, 110, 68, 0.15);
-    transition: background-color .3s ease, transform .3s ease, color .3s ease;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
+    transition: var(--transicao-rapida);
 }
-
 .botao.fav-selector-btn:hover {
-    background-color: var(--button-bg-hover);
-    color: var(--main-nav-text-hover);
-    box-shadow: 0px 0px 10px 2px var(--button-bg-hover);
     transform: scale(1.05);
 }
 
+/* Adicione este código ao final do seu arquivo style.css */
+
+#mensagem.sucesso {
+    color: #28a745; /* Verde para sucesso */
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+#mensagem.erro {
+    color: #dc3545; /* Vermelho para erro */
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+/* Estilo padrão (quando não for sucesso nem erro) */
 #mensagem {
-    margin-top: 25px;
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    font-weight: bold;
+    color: var(--cor-primaria); /* Amarelo padrão */
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-/* Responsividade Geral */
-/* Telas médias (e.g., tablets em modo paisagem, laptops pequenos) */
+
+
+/* -------------------
+ * RESPONSIVIDADE
+ * ------------------- */
 @media (max-width: 992px) {
-    .lista nav ul {
-        justify-content: space-around;
-    }
-    .lista nav ul li {
-        margin: 0 10px;
-    }
-    .stats-container, .matches-container, .footer-container {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        padding: 0 15px;
-    }
-    /* Para os contêineres que não rolam, quebramos eles */
-    .teams-container {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 2-3 cards por linha */
-        padding: 0 15px; /* Ajusta padding */
-    }
-    .duo {
-        flex-wrap: wrap; /* Permite quebrar em telas menores */
-        justify-content: center;
-        padding: 0 15px; /* Ajusta padding */
-    }
-    .roblox, .rivals, .fc {
-        flex-basis: calc(50% - 20px); /* 2 por linha em telas médias */
-    }
-    .match-card.fav-selector {
-        width: 90%;
-        margin: 50px auto;
+    header {
+        padding: 1rem;
     }
 }
 
-/* Telas menores (e.g., tablets em modo retrato, celulares grandes) */
 @media (max-width: 768px) {
-    /* Menu Hambúrguer */
-    .menu-toggle {
-        display: block;
-        margin-left: auto; /* Garante que fique no canto direito */
-    }
-    .lista { /* Este é o container do nav, precisa flex para o menu-toggle */
-        flex-grow: 1; /* Ocupa o espaço restante no header */
-        display: flex;
-        justify-content: flex-end; /* Empurra o nav para a direita do header */
-    }
-    .lista nav {
-        position: absolute;
-        top: 100%; /* Abaixo do header */
-        right: 0; /* Alinha o menu suspenso à direita */
+    /* --- Menu Mobile --- */
+    .menu-toggle { display: block; }
+    .nav-principal {
+        order: 3; /* Coloca o menu abaixo do logo e do botão */
         width: 100%;
-        max-width: 300px; /* Limita a largura do menu para ser mais compacto */
-        background: var(--header-bg);
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease-out, box-shadow 0.3s ease;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-        border-radius: 0 0 15px 15px; /* Bordas arredondadas na parte inferior */
+        transition: max-height 0.4s ease-in-out;
     }
-    .lista nav.active {
-        max-height: 300px; /* Altura para mostrar o menu */
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    .nav-principal.active { 
+        max-height: 500px; /* Altura suficiente para os links */
+        margin-top: 1rem;
     }
-    .lista nav ul {
+    .nav-principal nav ul {
         flex-direction: column;
         align-items: center;
-        padding: 20px 0;
+        padding: 1rem 0;
+        gap: 1rem;
     }
-    .lista nav ul li {
-        margin: 10px 0;
-        width: 80%;
-    }
-    .lista a {
-        width: 100%;
-        font-size: 1.2em;
-        padding: 12px 0;
-    }
+    header { flex-wrap: wrap; }
 
-    header {
-        flex-direction: row; /* Mantém logo e menu-toggle na mesma linha */
-        justify-content: space-between;
-    }
-    .logo-link {
-        margin: 0;
-    }
-    .stats-container, .matches-container, .footer-container {
-        grid-template-columns: 1fr;
-        padding: 0 10px;
-    }
-    .stats-card, .match-card {
-        padding: 20px;
-    }
-    .match-teams {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .team, .match-info {
-        width: 100%;
-    }
-    /* Ajustes para cards de times (Clubes) */
-    .teams-container {
-        grid-template-columns: 1fr; /* Força 1 card por linha em celular */
-        padding: 0 15px; /* Padding interno */
-        overflow-x: hidden; /* Garante que o container não role */
-    }
-    .team-card {
-        height: auto; /* Altura automática para se ajustar ao conteúdo */
-        flex: unset; /* Remove flex-basis para que a grid assuma */
-    }
-    /* Remover transform no hover para mobile para evitar problemas */
-    .team-card .team-front, .team-card .team-back {
-        position: static; /* Remove position absolute */
-        transform: none !important; /* Reseta qualquer transformação */
-        margin-bottom: 20px; /* Espaçamento entre os cards empilhados */
-    }
-    .team-card:hover .team-front, .team-card:hover .team-back {
-        transform: none; /* Desabilita o flip no hover para mobile */
-    }
-    /* Ajustes para a seção de jogos (jogos.html) */
-    .duo {
-        flex-direction: column; /* Empilha os itens verticalmente */
-        align-items: center; /* Centraliza os itens empilhados */
-        margin-top: 30px;
-        overflow-x: hidden; /* Sem rolagem horizontal forçada aqui */
-    }
-    .roblox, .rivals, .fc {
-        width: 90%; /* Ocupa mais largura em telas menores */
-        flex-basis: auto; /* Redefine a base flexível */
-        max-width: 300px;
-    }
-
-    /* Responsividade da tabela para telas pequenas */
-    .standings thead {
-        display: none; /* Esconde o cabeçalho da tabela */
-    }
-    .standings, .standings tbody, .standings tr, .standings th, .standings td {
-        display: block; /* Transforma em blocos */
-        width: 100%; /* Ocupa a largura total */
-    }
+    /* --- Tabela Responsiva --- */
+    .standings thead { display: none; }
     .standings tr {
-        margin-bottom: 15px; /* Espaçamento entre as "linhas-cards" */
+        display: block;
+        margin-bottom: 1rem;
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 10px;
-        padding: 10px;
-        background: linear-gradient(145deg, var(--light-background), var(--dark-background));
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        padding: 1rem;
     }
     .standings td {
-        text-align: right; /* Alinha o valor à direita */
-        padding-left: 50%; /* Espaço para o "cabeçalho" da célula */
-        position: relative;
-        white-space: normal; /* Permite que o texto quebre */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        padding: 0.75rem 0.5rem;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
     }
+    .standings td:last-child { border-bottom: none; }
     .standings td::before {
-        content: attr(data-label); /* Usa o atributo data-label como "cabeçalho" da célula */
-        position: absolute;
-        left: 10px;
-        width: 45%;
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--cor-primaria);
         text-align: left;
-        font-weight: bold;
-        color: var(--primary-color);
+        margin-right: 1rem;
     }
-    .team-name td::before {
-        display: none; /* Oculta o data-label para a célula do nome do time, pois já tem img */
+    .standings td.team-name {
+        font-size: 1.1rem;
+        padding: 0.5rem 0;
     }
-    .team-name {
-        justify-content: flex-end; /* Alinha o nome do time à direita */
-        padding-right: 10px; /* Pequeno padding */
+    .standings td.team-name::before { display: none; }
+    
+    .match-teams { flex-direction: column; gap: 1rem; }
+
+    /* --- Cards de Times (desativa flip) --- */
+    .team-card, .team-card:hover { 
+        transform: none; 
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        background: var(--gradiente-card);
+        border-radius: 15px;
+        cursor: default;
     }
-    .team-name img {
-        margin-right: auto; /* Empurra a imagem para a esquerda */
-        margin-left: 10px; /* Distancia da borda */
+    .team-front, .team-back {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        background: none;
+        width: 100%;
+        height: auto;
+    }
+    .team-back { display: block; margin-top: 2rem; } /* Mostra o verso no mobile, abaixo do front */
+    .teams-container {
+       display: grid;
+       grid-template-columns: 1fr; /* Garante uma coluna só */
+       perspective: none;
+       gap: 1.5rem;
     }
 
-    .glitch {
-        font-size: 45px;
-    }
-    .line {
-        width: 80px;
-    }
     .footer-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 0 15px;
-    }
-    .footer {
-        padding: 40px 0 20px;
-    }
-    .footer-section {
         text-align: center;
     }
-    .footer-nav a {
-        padding-left: 0;
+    .footer-section h3, .footer-logo {
+        justify-content: center;
+        text-align: center;
     }
-    .footer-nav a::before {
-        display: none;
-    }
-    .match-card.fav-selector {
-        padding: 20px;
-    }
-    .grupob-times img {
-        width: 90px;
-        height: 90px;
-    }
-    .botao.fav-selector-btn {
-        font-size: 0.9rem;
-        padding: 12px;
-    }
-    #mensagem {
-        font-size: 1rem;
+    .footer-section h3::after {
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
-/* Telas muito pequenas (e.g., celulares antigos, modo paisagem) */
 @media (max-width: 480px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-    .logo {
-        width: 100px;
-    }
-    .lista a {
-        font-size: 1em;
-        padding: 8px 15px;
-    }
-    .cursor {
-        width: 15px;
-        height: 15px;
-    }
-    .cursor::before {
-        width: 40px;
-        height: 40px;
-    }
-    .glitch {
-        font-size: 35px;
-    }
-    .team-logo {
-        width: 80px;
-        height: 80px;
-    }
-    .team-front h3, .team-back h3 {
-        font-size: 1.5rem;
-    }
-    .team-info p {
-        font-size: 0.9rem;
-    }
-    .footer-logo {
-        justify-content: center;
-    }
-    .footer-logo img {
-        width: 50px;
-    }
-    .footer-logo-text {
-        font-size: 1.4rem;
-    }
-    .grupob-times {
-        gap: 15px;
-    }
-    .grupob-times img {
-        width: 70px;
-        height: 70px;
-        padding: 8px;
-    }
-    /* Aumenta o tamanho da imagem do time na tabela para mobile */
-    .standings .team-name img {
-        width: 30px;
-        height: 30px;
-    }
+    body { font-size: 14px; }
+    header { padding: 1rem 0.75rem; }
+    .logo { width: 100px; }
+    .fav-teams-container img { width: 90px; height: 90px; }
 }

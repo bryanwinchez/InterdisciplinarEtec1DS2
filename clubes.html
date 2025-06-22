@@ -3,191 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clubes | Mundial de Clubes 2025</title>
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <title>Clubes | Mundial de Clubes 2025</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <!--Efeito de animação do cursor-->
     <div class="cursor"></div>
 
-     <header>
-        <!-- Link da logo para a página inicial -->
+    <header>
         <a href="index.html" class="logo-link">
-            <img src="img/logo-fifa.png" alt="FIFA Logo" class="logo" width="130">
+            <img src="img/logo-fifa.png" alt="Logo do Mundial de Clubes FIFA 2025" class="logo">
         </a>
-        <!-- Botão do menu hambúrguer para mobile -->
         <button class="menu-toggle" aria-label="Abrir Menu">☰</button>
-        <div class="lista">
+        <div class="nav-principal">
             <nav>
                 <ul>
-                    <!-- Links de navegação. A classe 'active' será adicionada via JS para o link da página atual. -->
                     <li><a href="index.html" class="botao">Início</a></li>
                     <li><a href="clubes.html" class="botao active">Clubes</a></li>
-                    <li><a href="calendario.html" class="botao">Calendário</a></li>
-                    <li><a href="sobre.html" class="botao">Sobre</a></li>
                     <li><a href="jogos.html" class="botao">Jogue</a></li>
                     <li><a href="favorito.html" class="botao">Favorito</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <section id="teams" class="teams">
+
+    <main class="container">
         <h1 class="glitch" data-text="GRUPO B">GRUPO B</h1>
-        <hr class="line">
-        <!-- Container dos times com layout responsivo (quebra em celulares) -->
+        <hr class="linha-destaque">
+        
         <div class="teams-container">
             <!-- PSG -->
             <div class="team-card" data-team="psg">
                 <div class="team-front">
-                    <div class="team-logo">
-                        <img src="img/psg-logo.png" alt="Paris Saint-Germain">
-                    </div>
+                    <div class="team-logo"><img src="img/psg-logo.png" alt="Logo do Paris Saint-Germain"></div>
                     <h3>Paris Saint-Germain</h3>
                     <h4 class="country">França</h4>
                 </div>
                 <div class="team-back">
                     <h3>Paris Saint-Germain</h3>
                     <div class="team-info">
-                        <p class="Infos"><strong>Fundação:</strong> 1970</p>
-                        <p class="Infos"><strong>Estádio:</strong> Parc des Princes</p>
-                        <p class="Infos"><strong>Títulos:</strong> 11x Ligue 1, 14x Copa da França</p>
-                        <p class="Infos"><strong>Classificação:</strong> Ranking UEFA</p>
+                        <p><strong>Fundação:</strong> 1970</p>
+                        <p><strong>Estádio:</strong> Parc des Princes</p>
+                        <p><strong>Títulos Notáveis:</strong> 11x Ligue 1, 14x Copa da França</p>
+                        <p><strong>Classificação:</strong> Ranking UEFA</p>
                     </div>
-                    <a href="psg.html" class="team-btn">Ver Detalhes</a>
+                    <a href="#!" class="team-btn">Ver Detalhes</a>
                 </div>
             </div>
 
             <!-- Atlético de Madrid -->
             <div class="team-card" data-team="atletico">
                 <div class="team-front">
-                    <div class="team-logo">
-                        <img src="img/atletico-logo.png" alt="Atlético de Madrid">
-                    </div>
+                    <div class="team-logo"><img src="img/atletico-logo.png" alt="Logo do Atlético de Madrid"></div>
                     <h3>Atlético de Madrid</h3>
                     <h4 class="country">Espanha</h4>
                 </div>
                 <div class="team-back">
                     <h3>Atlético de Madrid</h3>
                     <div class="team-info">
-                        <p class="Infos"><strong>Fundação:</strong> 1903</p>
-                        <p class="Infos"><strong>Estádio:</strong> Wanda Metropolitano</p>
-                        <p class="Infos"><strong>Títulos:</strong> 11x La Liga, 10x Copa del Rey</p>
-                        <p class="Infos"><strong>Classificação:</strong> Ranking UEFA</p>
+                        <p><strong>Fundação:</strong> 1903</p>
+                        <p><strong>Estádio:</strong> Metropolitano</p>
+                        <p><strong>Títulos Notáveis:</strong> 11x La Liga, 10x Copa del Rey</p>
+                        <p><strong>Classificação:</strong> Ranking UEFA</p>
                     </div>
-                    <a href="atletico.html" class="team-btn">Ver Detalhes</a>
+                    <a href="#!" class="team-btn">Ver Detalhes</a>
                 </div>
             </div>
 
             <!-- Botafogo -->
             <div class="team-card" data-team="botafogo">
                 <div class="team-front">
-                    <div class="team-logo">
-                        <img src="img/botafogo-logo.png" alt="Botafogo">
-                    </div>
+                    <div class="team-logo"><img src="img/botafogo-logo.png" alt="Logo do Botafogo"></div>
                     <h3>Botafogo</h3>
                     <h4 class="country">Brasil</h4>
                 </div>
                 <div class="team-back">
                     <h3>Botafogo</h3>
                     <div class="team-info">
-                        <p class="Infos"><strong>Fundação:</strong> 1894</p>
-                        <p class="Infos"><strong>Estádio:</strong> Nilton Santos</p>
-                        <p class="Infos"><strong>Títulos:</strong> 2x Brasileirão, 1x Copa Conmebol</p>
-                        <p class="Infos"><strong>Classificação:</strong> Libertadores</p>
+                        <p><strong>Fundação:</strong> 1894</p>
+                        <p><strong>Estádio:</strong> Nilton Santos</p>
+                        <p><strong>Títulos Notáveis:</strong> 2x Brasileirão, 1x Libertadores</p>
+                        <p><strong>Classificação:</strong> Campeão Libertadores</p>
                     </div>
-                    <a href="botafogo.html" class="team-btn">Ver Detalhes</a>
+                    <a href="#!" class="team-btn">Ver Detalhes</a>
                 </div>
             </div>
 
             <!-- Seattle Sounders -->
             <div class="team-card" data-team="seattle">
                 <div class="team-front">
-                    <div class="team-logo">
-                        <img src="img/seattle-logo.png" alt="Seattle Sounders">
-                    </div>
+                    <div class="team-logo"><img src="img/seattle-logo.png" alt="Logo do Seattle Sounders"></div>
                     <h3>Seattle Sounders</h3>
                     <h4 class="country">Estados Unidos</h4>
                 </div>
                 <div class="team-back">
                     <h3>Seattle Sounders</h3>
                     <div class="team-info">
-                        <p class="Infos"><strong>Fundação:</strong> 2007</p>
-                        <p class="Infos"><strong>Estádio:</strong> Lumen Field</p>
-                        <p class="Infos"><strong>Títulos:</strong> 2x MLS Cup, 1x Concacaf Champions League</p>
-                        <p class="Infos"><strong>Classificação:</strong> Campeão Concacaf</p>
+                        <p><strong>Fundação:</strong> 2007</p>
+                        <p><strong>Estádio:</strong> Lumen Field</p>
+                        <p><strong>Títulos Notáveis:</strong> 2x MLS Cup, 1x Concacaf</p>
+                        <p><strong>Classificação:</strong> Campeão Concacaf</p>
                     </div>
-                    <a href="seattle.html" class="team-btn">Ver Detalhes</a>
+                    <a href="#!" class="team-btn">Ver Detalhes</a>
                 </div>
             </div>
         </div>
-        <h1 class="glitch" data-text="Probabilidades">Probabilidades</h1>
-        <hr class="line">
-        <div class="stats-container">
-            <div class="stats-card">
-                <h3>Comparação de Times</h3>
-                <div class="chart-container">
-                    <canvas id="radarChart"></canvas>
+
+        <h1 class="glitch" data-text="Análise dos Times" style="margin-top: 4rem;">Análise dos Times</h1>
+        <hr class="linha-destaque">
+        
+        <div class="grid-container">
+            <div class="card">
+                <h3>Comparativo de Atributos</h3>
+                <div class="chart-container"><canvas id="radarChart"></canvas></div>
+            </div>
+            <div class="card">
+                <h3>Probabilidade de Avançar</h3>
+                <div class="chart-container"><canvas id="probabilityChart"></canvas></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="img/logo-fifa.png" alt="Logo da FIFA">
+                    <span class="footer-logo-text">Mundial 2025</span>
                 </div>
+                <p class="footer-description">
+                    Acompanhe todas as emoções do Mundial de Clubes FIFA 2025. Os melhores times do mundo se enfrentam em uma competição histórica.
+                </p>
             </div>
-
-            <div class="stats-card">
-                <h3>Probabilidade de Classificação</h3>
-                <div class="chart-container">
-                    <canvas id="probabilityChart"></canvas>
-                </div>
+            <div class="footer-section">
+                <h3>Navegação</h3>
+                <ul class="footer-nav">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="clubes.html">Clubes</a></li>
+                    <li><a href="jogos.html">Jogue</a></li>
+                    <li><a href="favorito.html">Favorito</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Clubes do Grupo B</h3>
+                <ul class="footer-nav">
+                    <li><a href="#!">Paris Saint-Germain</a></li>
+                    <li><a href="#!">Atlético de Madrid</a></li>
+                    <li><a href="#!">Botafogo</a></li>
+                    <li><a href="#!">Seattle Sounders</a></li>
+                </ul>
             </div>
         </div>
-    </section>
-
-<!-- Rodapé -->
-<footer class="footer">
-    <div class="footer-container">
-        <!-- Seção da Logo e Descrição do Rodapé -->
-        <div class="footer-section">
-            <div class="footer-logo">
-                <img src="img/logo-fifa.png" alt="FIFA Logo">
-                <span class="footer-logo-text">Mundial 2025</span>
-            </div>
-            <p class="footer-description">
-                Acompanhe todas as emoções do Mundial de Clubes FIFA 2025.
-                Os melhores times do mundo se enfrentam nos Estados Unidos
-                em uma competição histórica e inesquecível.
-            </p>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mundial de Clubes FIFA. Desenvolvido com <span class="footer-heart">♥</span> para os fãs do futebol.</p>
         </div>
-
-        <!-- Seção de Navegação do Rodapé -->
-        <div class="footer-section">
-            <h3>Navegação</h3>
-            <ul class="footer-nav">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="clubes.html">Clubes</a></li>
-                <li><a href="calendario.html">Calendário</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="jogos.html">Jogue</a></li>
-                <li><a href="favorito.html">Favorito</a></li>
-            </ul>
-        </div>
-
-        <!-- Seção de Informações do Rodapé -->
-        <div class="footer-section">
-            <h3>Informações</h3>
-            <ul class="footer-nav">
-                <li><a href="#regulamento">Paris Saint-Germain</a></li>
-                <li><a href="#ingressos">Atlético de Madrid</a></li>
-                <li><a href="#noticias">Botafogo</a></li>
-                <li><a href="#estatisticas">Seattle Sounders</a></li>
-            </ul>
-        </div>
-    </div>
-    <!-- Rodapé inferior com direitos autorais -->
-    <div class="footer-bottom">
-        <p>&copy; 2025 Mundial de Clubes FIFA. Desenvolvido com <span class="footer-heart">♥</span> para os fãs do futebol mundial.</p>
-    </div>
-</footer>
+    </footer>
 
     <script src="main.js"></script>
-    <script src="cursor.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

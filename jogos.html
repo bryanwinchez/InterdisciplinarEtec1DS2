@@ -1,35 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="style.css"> <!-- Apenas style.css agora -->
-
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     <title>Jogue | Mundial de Clubes 2025</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <!--Efeito de animação do cursor-->
     <div class="cursor"></div>
 
     <header>
-        <!-- Link da logo para a página inicial -->
         <a href="index.html" class="logo-link">
-            <img src="img/logo-fifa.png" alt="FIFA Logo" class="logo" width="130">
+            <img src="img/logo-fifa.png" alt="Logo do Mundial de Clubes FIFA 2025" class="logo">
         </a>
-        <!-- Botão do menu hambúrguer para mobile -->
         <button class="menu-toggle" aria-label="Abrir Menu">☰</button>
-        <div class="lista">
+        <div class="nav-principal">
             <nav>
                 <ul>
-                    <!-- Links de navegação. A classe 'active' será adicionada via JS para o link da página atual. -->
                     <li><a href="index.html" class="botao">Início</a></li>
                     <li><a href="clubes.html" class="botao">Clubes</a></li>
-                    <li><a href="calendario.html" class="botao">Calendário</a></li>
-                    <li><a href="sobre.html" class="botao">Sobre</a></li>
                     <li><a href="jogos.html" class="botao active">Jogue</a></li>
                     <li><a href="favorito.html" class="botao">Favorito</a></li>
                 </ul>
@@ -37,74 +27,67 @@
         </div>
     </header>
 
-    <!-- Seção de jogos com layout responsivo (quebra em celulares) -->
-    <div class="duo">
-        <div class="roblox">
-            <a href="https://www.roblox.com/pt/games/9486506804/Football-Training-Camp-FIFA-World" target="_blank"
-                rel="noopener noreferrer">
-                <img src="img/mundo-fifa-roblox.png" alt="imagem da jogo Mundo Fifa do Roblox">
-            </a>
-        </div>
-        <div class="rivals">
-            <a href="https://fifa.rivals.game/?intcmp=%28p_fifacom%29_%28d_playzone%29_%28c_webburger-mcf-2025%29_%28sc_play%29_%28ssc_fifa-rivals%29_%28sssc_%29_%28l_pt%29_%28da_10062025%29"
-                target="_blank" rel="noopener noreferrer">
-                <img src="img/fifa-rivals.webp" alt="imagem da jogo Fifa rivals">
-            </a>
-        </div>
-        <div class="fc">
-            <a href="https://www.ea.com/pt-br/games/ea-sports-fc/fc-25" target="_blank" rel="noopener noreferrer">
-                <img src="img/fc 25.jpg" alt="imagem da jogo Mundo Fc 25">
-            </a>
-        </div>
-    </div>
-    <br><br><br>
+    <main class="container">
+        <h1 class="glitch" data-text="Jogue Agora">Jogue Agora</h1>
+        <hr class="linha-destaque">
+        <p style="text-align: center; max-width: 600px; margin: -2rem auto 3rem; opacity: 0.8;">
+            Entre no clima do Mundial com os jogos oficiais e experiências da FIFA.
+        </p>
 
-    <!-- Rodapé -->
+        <div class="games-grid">
+            <div class="game-card">
+                <a href="https://www.roblox.com/pt/games/9486506804/Football-Training-Camp-FIFA-World" target="_blank" rel="noopener noreferrer">
+                    <img src="img/mundo-fifa-roblox.png" alt="Banner do jogo Mundo FIFA no Roblox">
+                </a>
+            </div>
+            <div class="game-card">
+                <a href="https://fifa.rivals.game/" target="_blank" rel="noopener noreferrer">
+                    <img src="img/fifa-rivals.webp" alt="Banner do jogo FIFA Rivals">
+                </a>
+            </div>
+            <div class="game-card">
+                <a href="https://www.ea.com/pt-br/games/ea-sports-fc/fc-25" target="_blank" rel="noopener noreferrer">
+                    <img src="img/fc 25.jpg" alt="Banner do jogo EA Sports FC 25">
+                </a>
+            </div>
+        </div>
+    </main>
+
     <footer class="footer">
         <div class="footer-container">
-            <!-- Seção da Logo e Descrição do Rodapé -->
             <div class="footer-section">
                 <div class="footer-logo">
-                    <img src="img/logo-fifa.png" alt="FIFA Logo">
+                    <img src="img/logo-fifa.png" alt="Logo da FIFA">
                     <span class="footer-logo-text">Mundial 2025</span>
                 </div>
                 <p class="footer-description">
-                    Acompanhe todas as emoções do Mundial de Clubes FIFA 2025.
-                    Os melhores times do mundo se enfrentam nos Estados Unidos
-                    em uma competição histórica e inesquecível.
+                    Acompanhe todas as emoções do Mundial de Clubes FIFA 2025. Os melhores times do mundo se enfrentam em uma competição histórica.
                 </p>
             </div>
-
-            <!-- Seção de Navegação do Rodapé -->
             <div class="footer-section">
                 <h3>Navegação</h3>
                 <ul class="footer-nav">
                     <li><a href="index.html">Início</a></li>
                     <li><a href="clubes.html">Clubes</a></li>
-                    <li><a href="calendario.html">Calendário</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
                     <li><a href="jogos.html">Jogue</a></li>
                     <li><a href="favorito.html">Favorito</a></li>
                 </ul>
             </div>
-
-            <!-- Seção de Informações do Rodapé -->
             <div class="footer-section">
-                <h3>Informações</h3>
+                <h3>Clubes do Grupo B</h3>
                 <ul class="footer-nav">
-                    <li><a href="#regulamento">Paris Saint-Germain</a></li>
-                    <li><a href="#ingressos">Atlético de Madrid</a></li>
-                    <li><a href="#noticias">Botafogo</a></li>
-                    <li><a href="#estatisticas">Seattle Sounders</a></li>
+                    <li><a href="#!">Paris Saint-Germain</a></li>
+                    <li><a href="#!">Atlético de Madrid</a></li>
+                    <li><a href="#!">Botafogo</a></li>
+                    <li><a href="#!">Seattle Sounders</a></li>
                 </ul>
             </div>
         </div>
-        <!-- Rodapé inferior com direitos autorais -->
         <div class="footer-bottom">
-            <p>&copy; 2025 Mundial de Clubes FIFA. Desenvolvido com <span class="footer-heart">♥</span> para os fãs do futebol mundial.</p>
+            <p>&copy; 2025 Mundial de Clubes FIFA. Desenvolvido com <span class="footer-heart">♥</span> para os fãs do futebol.</p>
         </div>
     </footer>
-    <script src="cursor.js"></script>
-</body>
 
+    <script src="script.js"></script>
+</body>
 </html>
