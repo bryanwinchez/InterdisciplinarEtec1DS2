@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css"> <title>Clubes | Mundial de Clubes 2025</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Clubes | Mundial de Clubes 2025</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <!--Efeito de animação do cursor-->
     <div class="cursor"></div>
 
      <header>
+        <!-- Link da logo para a página inicial -->
         <a href="index.html" class="logo-link">
             <img src="img/logo-fifa.png" alt="FIFA Logo" class="logo" width="130">
         </a>
+        <!-- Botão do menu hambúrguer para mobile -->
         <button class="menu-toggle" aria-label="Abrir Menu">☰</button>
         <div class="lista">
             <nav>
                 <ul>
+                    <!-- Links de navegação. A classe 'active' será adicionada via JS para o link da página atual. -->
                     <li><a href="index.html" class="botao">Início</a></li>
                     <li><a href="clubes.html" class="botao active">Clubes</a></li>
                     <li><a href="calendario.html" class="botao">Calendário</a></li>
                     <li><a href="sobre.html" class="botao">Sobre</a></li>
                     <li><a href="jogos.html" class="botao">Jogue</a></li>
+                    <li><a href="favorito.html" class="botao">Favorito</a></li>
                 </ul>
             </nav>
         </div>
@@ -30,7 +36,9 @@
     <section id="teams" class="teams">
         <h1 class="glitch" data-text="GRUPO B">GRUPO B</h1>
         <hr class="line">
+        <!-- Container dos times com layout responsivo (quebra em celulares) -->
         <div class="teams-container">
+            <!-- PSG -->
             <div class="team-card" data-team="psg">
                 <div class="team-front">
                     <div class="team-logo">
@@ -51,6 +59,7 @@
                 </div>
             </div>
 
+            <!-- Atlético de Madrid -->
             <div class="team-card" data-team="atletico">
                 <div class="team-front">
                     <div class="team-logo">
@@ -71,6 +80,7 @@
                 </div>
             </div>
 
+            <!-- Botafogo -->
             <div class="team-card" data-team="botafogo">
                 <div class="team-front">
                     <div class="team-logo">
@@ -91,6 +101,7 @@
                 </div>
             </div>
 
+            <!-- Seattle Sounders -->
             <div class="team-card" data-team="seattle">
                 <div class="team-front">
                     <div class="team-logo">
@@ -130,8 +141,10 @@
         </div>
     </section>
 
+<!-- Rodapé -->
 <footer class="footer">
     <div class="footer-container">
+        <!-- Seção da Logo e Descrição do Rodapé -->
         <div class="footer-section">
             <div class="footer-logo">
                 <img src="img/logo-fifa.png" alt="FIFA Logo">
@@ -144,6 +157,7 @@
             </p>
         </div>
 
+        <!-- Seção de Navegação do Rodapé -->
         <div class="footer-section">
             <h3>Navegação</h3>
             <ul class="footer-nav">
@@ -152,9 +166,11 @@
                 <li><a href="calendario.html">Calendário</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="jogos.html">Jogue</a></li>
+                <li><a href="favorito.html">Favorito</a></li>
             </ul>
         </div>
 
+        <!-- Seção de Informações do Rodapé -->
         <div class="footer-section">
             <h3>Informações</h3>
             <ul class="footer-nav">
@@ -165,6 +181,7 @@
             </ul>
         </div>
     </div>
+    <!-- Rodapé inferior com direitos autorais -->
     <div class="footer-bottom">
         <p>&copy; 2025 Mundial de Clubes FIFA. Desenvolvido com <span class="footer-heart">♥</span> para os fãs do futebol mundial.</p>
     </div>

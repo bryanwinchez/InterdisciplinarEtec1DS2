@@ -57,7 +57,7 @@ header {
     align-items: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
     flex-wrap: wrap;
-    position: sticky; /* Sticky header */
+    position: sticky; /* Header fixo no topo */
     top: 0;
     z-index: 1000;
 }
@@ -73,12 +73,23 @@ header {
     cursor: pointer;
 }
 
-/* Estilos da Lista de Navegação Principal */
+/* Estilos da Lista de Navegação Principal (Desktop) */
+.lista {
+    flex-grow: 1; /* Permite que o contêiner da lista ocupe espaço disponível */
+    display: flex; /* Para flexbox alinhamento do nav */
+    justify-content: flex-end; /* Alinha a navegação à direita em desktop */
+}
+
+.lista nav {
+    /* Transição para o menu hambúrguer (mobile) */
+    transition: max-height 0.3s ease-out;
+}
+
 .lista nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
+    display: flex; /* Mantém flex para desktop */
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -98,11 +109,11 @@ header {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     transition: var(--transition);
-    overflow: hidden; /* Garante que o hover de background cubra tudo */
-    z-index: 1; /* Para garantir que o ::after fique por cima */
+    overflow: hidden;
+    z-index: 1;
 }
 
-/* Efeito Hover do Botão da NAV */
+/* Efeito Hover e Ativo do Botão da NAV */
 .lista a:hover,
 .lista a.active {
     color: var(--main-nav-text-hover); /* Texto PRETO ao passar o mouse/ativo */
@@ -121,7 +132,7 @@ header {
     background-color: rgb(197, 135, 0);
     border-radius: 2px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    z-index: 2; /* Garante que a linha fique por cima */
+    z-index: 2;
 }
 
 /* Estilos do Botão de Menu Hambúrguer */
@@ -135,6 +146,7 @@ header {
     padding: 10px;
     z-index: 1001; /* Garante que fique acima de outros elementos */
     transition: var(--transition);
+    margin-left: auto; /* Empurra para o canto direito em telas menores */
 }
 
 .menu-toggle:hover {
@@ -146,7 +158,8 @@ header {
     outline: none;
 }
 
-/* Estilos de Menu Dropdown (Manteve, mas não é a navegação principal) */
+/* Estilos de Menu Dropdown (se aplicável, para elementos como dropdowns) */
+/* Mantido caso haja uso futuro, mas não afeta a navegação principal atual */
 .menu {
     position: relative;
     display: flex;
@@ -228,39 +241,16 @@ header {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Estilos de Tabela (Classificação) */
+/* Estilos de Tabela (Classificação) - Adaptada para Responsividade sem Scrollbar */
 .table-container {
-    overflow-x: auto; /* Permite rolagem horizontal em tabelas grandes */
     margin-bottom: 5%;
-    /* Estilizar scrollbar da tabela para ser discreta */
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: var(--primary-color) var(--dark-background); /* Firefox */
-}
-
-/* Estilização da scrollbar da tabela para navegadores WebKit */
-.table-container::-webkit-scrollbar {
-    height: 8px; /* Altura da barra de rolagem horizontal */
-}
-
-.table-container::-webkit-scrollbar-track {
-    background: var(--dark-background);
-    border-radius: 10px;
-}
-
-.table-container::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 10px;
-    border: 2px solid var(--dark-background);
-}
-
-.table-container::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-color);
+    /* Removido overflow-x: auto; para que a tabela se adapte */
 }
 
 .standings {
     width: 100%;
-    min-width: 600px; /* Garante que a tabela não encolha demais, forçando o scrollbar */
     border-collapse: collapse;
+    /* Removido min-width para celular */
 }
 
 .standings th,
@@ -269,6 +259,7 @@ header {
     text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-color-light);
+    white-space: nowrap; /* Evita que o texto quebre nas colunas */
 }
 
 .standings th {
@@ -428,50 +419,31 @@ header {
     z-index: 0;
 }
 
-/* Container dos times com rolagem horizontal (carrosel) */
+/* Container dos times (Clubes) - Grid Responsivo para mostrar lado a lado ou quebrar */
 .teams-container {
-    display: flex;
-    flex-wrap: nowrap; /* Impede que os itens quebrem para a próxima linha */
-    overflow-x: auto; /* Habilita a rolagem horizontal quando necessário */
-    -webkit-overflow-scrolling: touch; /* Melhor rolagem em dispositivos iOS */
-    padding: 0 20px; /* Adiciona padding nas laterais para melhor visualização */
-    gap: 30px; /* Espaço entre os cards */
-    max-width: 100%;
+    display: grid;
+    /* Tenta 4 colunas em telas muito grandes, 3 em grandes, 2 em médias, 1 em pequenas */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Min-width 250px para cada card */
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     box-sizing: border-box;
-    justify-content: flex-start; /* Alinha os itens ao início do contêiner */
-    /* Estilizar scrollbar para ser discreta */
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: var(--primary-color) var(--dark-background); /* Firefox */
-}
-
-/* Estilização da scrollbar para navegadores WebKit (Chrome, Safari) */
-.teams-container::-webkit-scrollbar {
-    height: 8px;
-}
-
-.teams-container::-webkit-scrollbar-track {
-    background: var(--dark-background);
-    border-radius: 10px;
-}
-
-.teams-container::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 10px;
-    border: 2px solid var(--dark-background);
-}
-
-.teams-container::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-color);
+    overflow-x: hidden; /* Garante que não haverá scrollbar horizontal neste container */
 }
 
 
 .team-card {
-    flex: 0 0 300px; /* Define um tamanho fixo para cada card e impede que eles cresçam ou encolham */
     height: 400px;
     perspective: 1000px;
     cursor: pointer;
     position: relative;
+    /* Removido transform: translateY para não elevar ao passar o mouse */
 }
+
+/* Removido transform: translateY de team-card:hover */
 
 .team-card .team-front,
 .team-card .team-back {
@@ -580,42 +552,24 @@ strong {
 /* Estilos da Seção de Jogos (jogos.html) */
 .duo {
     display: flex;
-    flex-wrap: nowrap; /* Impede que os itens quebrem para a próxima linha */
-    overflow-x: auto; /* Habilita a rolagem horizontal quando necessário */
-    -webkit-overflow-scrolling: touch; /* Melhor rolagem em dispositivos iOS */
-    justify-content: center; /* Centraliza os itens no contêiner */
-    gap: 40px; /* Espaço entre os itens */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    justify-content: center; /* Centraliza os itens */
+    gap: 40px;
     margin-top: 50px;
-    padding: 0 20px; /* Adiciona padding para responsividade */
+    padding: 0 20px;
     max-width: 100%;
     box-sizing: border-box;
-}
-
-/* Estilização da scrollbar para navegadores WebKit (Chrome, Safari) */
-.duo::-webkit-scrollbar {
-    height: 8px;
-}
-
-.duo::-webkit-scrollbar-track {
-    background: var(--dark-background);
-    border-radius: 10px;
-}
-
-.duo::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 10px;
-    border: 2px solid var(--dark-background);
-}
-
-.duo::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-color);
+    overflow-x: hidden; /* Garante que não haverá scrollbar horizontal neste container */
 }
 
 .roblox, .rivals, .fc {
-    flex: 0 0 300px; /* Define um tamanho base para cada item para rolagem */
+    flex: 0 0 300px; /* Mantém um tamanho base */
     text-align: center;
     margin-bottom: 30px;
+    flex-basis: calc(50% - 20px); /* 2 por linha em telas médias */
+    max-width: 300px; /* Limite máximo para evitar que cresçam demais */
 }
+
 
 .roblox img, .rivals img, .fc img {
     border-radius: 10%;
@@ -834,28 +788,28 @@ strong {
     border-radius: 50%;
 }
 
-/* Estilos para o novo módulo de seleção de time favorito (indexstorage.html) */
-.match-card.fav-selector { /* Renomeado para evitar conflito com match-card existente */
+/* Estilos para o novo módulo de seleção de time favorito (favorito.html) */
+.match-card.fav-selector {
     width: 80%;
     max-width: 900px;
     margin: 80px auto;
     padding: 30px;
-    background: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    color: var(--text-color-light); /* Garante texto visível */
+    color: var(--text-color-light);
 }
 
 .match-card.fav-selector h2 {
-    color: var(--primary-color); /* Usa variável de cor primária */
+    color: var(--primary-color);
     margin-bottom: 30px;
 }
 
 .grupob-times {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Permite quebrar para múltiplas linhas em telas menores */
+    flex-wrap: wrap;
     gap: 30px;
     margin-bottom: 30px;
 }
@@ -864,7 +818,7 @@ strong {
     width: 120px;
     height: 120px;
     object-fit: contain;
-    background-color: var(--light-background); /* Usa variável de fundo claro */
+    background-color: var(--light-background);
     padding: 15px;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
@@ -875,30 +829,30 @@ strong {
 
 .grupob-times img:hover {
     transform: scale(1.1);
-    box-shadow: 0 10px 25px var(--button-bg-hover); /* Usa cor dourada de hover */
+    box-shadow: 0 10px 25px var(--button-bg-hover);
     background-color: var(--button-bg-hover);
 }
 
 .grupob-times img.selecionado {
-    border: 3px solid var(--fav-team-border); /* Borda dourada para selecionado */
+    border: 3px solid var(--fav-team-border);
 }
 
-.botao.fav-selector-btn { /* Nova classe para o botão deste módulo */
+.botao.fav-selector-btn {
     border: none;
-    background-color: rgba(0, 0, 0, 0.67); /* Adapta o fundo */
+    background-color: rgba(0, 0, 0, 0.67);
     color: var(--text-color-light);
     border-radius: 10px;
     padding: 10px 20px;
     font-weight: 550;
     font-size: 16px;
-    box-shadow: 0px 0px 10px 2px rgba(76, 110, 68, 0.15); /* Sombra mais sutil */
+    box-shadow: 0px 0px 10px 2px rgba(76, 110, 68, 0.15);
     transition: background-color .3s ease, transform .3s ease, color .3s ease;
     cursor: pointer;
 }
 
 .botao.fav-selector-btn:hover {
     background-color: var(--button-bg-hover);
-    color: var(--main-nav-text-hover); /* Texto preto no hover */
+    color: var(--main-nav-text-hover);
     box-shadow: 0px 0px 10px 2px var(--button-bg-hover);
     transform: scale(1.05);
 }
@@ -906,7 +860,7 @@ strong {
 #mensagem {
     margin-top: 25px;
     font-size: 1.2rem;
-    color: var(--primary-color); /* Usa cor primária para mensagens */
+    color: var(--primary-color);
     font-weight: bold;
 }
 
@@ -923,12 +877,21 @@ strong {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         padding: 0 15px;
     }
-    /* Para os contêineres de rolagem horizontal, garantimos que eles ocupem 100% */
-    .teams-container, .duo {
-        padding: 0 10px;
+    /* Para os contêineres que não rolam, quebramos eles */
+    .teams-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 2-3 cards por linha */
+        padding: 0 15px; /* Ajusta padding */
+    }
+    .duo {
+        flex-wrap: wrap; /* Permite quebrar em telas menores */
+        justify-content: center;
+        padding: 0 15px; /* Ajusta padding */
+    }
+    .roblox, .rivals, .fc {
+        flex-basis: calc(50% - 20px); /* 2 por linha em telas médias */
     }
     .match-card.fav-selector {
-        width: 90%; /* Ajusta largura em telas médias */
+        width: 90%;
         margin: 50px auto;
     }
 }
@@ -938,20 +901,29 @@ strong {
     /* Menu Hambúrguer */
     .menu-toggle {
         display: block;
+        margin-left: auto; /* Garante que fique no canto direito */
+    }
+    .lista { /* Este é o container do nav, precisa flex para o menu-toggle */
+        flex-grow: 1; /* Ocupa o espaço restante no header */
+        display: flex;
+        justify-content: flex-end; /* Empurra o nav para a direita do header */
     }
     .lista nav {
         position: absolute;
-        top: 100%;
-        left: 0;
+        top: 100%; /* Abaixo do header */
+        right: 0; /* Alinha o menu suspenso à direita */
         width: 100%;
+        max-width: 300px; /* Limita a largura do menu para ser mais compacto */
         background: var(--header-bg);
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease-out;
+        transition: max-height 0.3s ease-out, box-shadow 0.3s ease;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        border-radius: 0 0 15px 15px; /* Bordas arredondadas na parte inferior */
     }
     .lista nav.active {
-        max-height: 300px;
+        max-height: 300px; /* Altura para mostrar o menu */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
     .lista nav ul {
         flex-direction: column;
@@ -964,10 +936,12 @@ strong {
     }
     .lista a {
         width: 100%;
+        font-size: 1.2em;
+        padding: 12px 0;
     }
 
     header {
-        flex-direction: row;
+        flex-direction: row; /* Mantém logo e menu-toggle na mesma linha */
         justify-content: space-between;
     }
     .logo-link {
@@ -987,14 +961,81 @@ strong {
     .team, .match-info {
         width: 100%;
     }
-    /* Ajustes para carrossel de times/jogos em telas menores */
-    .teams-container, .duo {
-        padding: 0 10px;
+    /* Ajustes para cards de times (Clubes) */
+    .teams-container {
+        grid-template-columns: 1fr; /* Força 1 card por linha em celular */
+        padding: 0 15px; /* Padding interno */
+        overflow-x: hidden; /* Garante que o container não role */
     }
     .team-card {
-        height: 380px;
-        flex: 0 0 280px;
+        height: auto; /* Altura automática para se ajustar ao conteúdo */
+        flex: unset; /* Remove flex-basis para que a grid assuma */
     }
+    /* Remover transform no hover para mobile para evitar problemas */
+    .team-card .team-front, .team-card .team-back {
+        position: static; /* Remove position absolute */
+        transform: none !important; /* Reseta qualquer transformação */
+        margin-bottom: 20px; /* Espaçamento entre os cards empilhados */
+    }
+    .team-card:hover .team-front, .team-card:hover .team-back {
+        transform: none; /* Desabilita o flip no hover para mobile */
+    }
+    /* Ajustes para a seção de jogos (jogos.html) */
+    .duo {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        align-items: center; /* Centraliza os itens empilhados */
+        margin-top: 30px;
+        overflow-x: hidden; /* Sem rolagem horizontal forçada aqui */
+    }
+    .roblox, .rivals, .fc {
+        width: 90%; /* Ocupa mais largura em telas menores */
+        flex-basis: auto; /* Redefine a base flexível */
+        max-width: 300px;
+    }
+
+    /* Responsividade da tabela para telas pequenas */
+    .standings thead {
+        display: none; /* Esconde o cabeçalho da tabela */
+    }
+    .standings, .standings tbody, .standings tr, .standings th, .standings td {
+        display: block; /* Transforma em blocos */
+        width: 100%; /* Ocupa a largura total */
+    }
+    .standings tr {
+        margin-bottom: 15px; /* Espaçamento entre as "linhas-cards" */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 10px;
+        background: linear-gradient(145deg, var(--light-background), var(--dark-background));
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .standings td {
+        text-align: right; /* Alinha o valor à direita */
+        padding-left: 50%; /* Espaço para o "cabeçalho" da célula */
+        position: relative;
+        white-space: normal; /* Permite que o texto quebre */
+    }
+    .standings td::before {
+        content: attr(data-label); /* Usa o atributo data-label como "cabeçalho" da célula */
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        text-align: left;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    .team-name td::before {
+        display: none; /* Oculta o data-label para a célula do nome do time, pois já tem img */
+    }
+    .team-name {
+        justify-content: flex-end; /* Alinha o nome do time à direita */
+        padding-right: 10px; /* Pequeno padding */
+    }
+    .team-name img {
+        margin-right: auto; /* Empurra a imagem para a esquerda */
+        margin-left: 10px; /* Distancia da borda */
+    }
+
     .glitch {
         font-size: 45px;
     }
@@ -1031,9 +1072,6 @@ strong {
     }
     #mensagem {
         font-size: 1rem;
-    }
-    .standings {
-        min-width: unset; /* Remove min-width para celular, deixa overflow-x:auto lidar */
     }
 }
 
@@ -1086,5 +1124,10 @@ strong {
         width: 70px;
         height: 70px;
         padding: 8px;
+    }
+    /* Aumenta o tamanho da imagem do time na tabela para mobile */
+    .standings .team-name img {
+        width: 30px;
+        height: 30px;
     }
 }

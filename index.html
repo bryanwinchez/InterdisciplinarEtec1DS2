@@ -14,30 +14,37 @@
 
 <body>
 
+    <!--Efeito de animação do cursor-->
     <div class="cursor"></div>
 
     <header>
+        <!-- Link da logo para a página inicial -->
         <a href="index.html" class="logo-link">
             <img src="img/logo-fifa.png" alt="FIFA Logo" class="logo" width="130">
         </a>
+        <!-- Botão do menu hambúrguer para mobile -->
         <button class="menu-toggle" aria-label="Abrir Menu">☰</button>
         <div class="lista">
             <nav>
                 <ul>
+                    <!-- Links de navegação. A classe 'active' será adicionada via JS para o link da página atual. -->
                     <li><a href="index.html" class="botao active">Início</a></li>
                     <li><a href="clubes.html" class="botao">Clubes</a></li>
                     <li><a href="calendario.html" class="botao">Calendário</a></li>
                     <li><a href="sobre.html" class="botao">Sobre</a></li>
                     <li><a href="jogos.html" class="botao">Jogue</a></li>
+                    <li><a href="favorito.html" class="botao">Favorito</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <!-- Título Classificação com estilo glitch e linha -->
     <h1 class="glitch" data-text="Classificação">Classificação</h1>
     <hr class="line">
     <div class="stats-container">
         <div class="stats-card">
+            <!-- O título "Classificação" foi removido daqui, pois já há um h1 externo -->
             <div class="table-container">
                 <table class="standings">
                     <thead>
@@ -56,53 +63,53 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td class="team-name"><img src="img/atletico-logo.png" alt="Atlético"> Atlético de Madrid
+                            <td data-label="Pos">1</td>
+                            <td data-label="Clube" class="team-name"><img src="img/atletico-logo.png" alt="Atlético"> Atlético de Madrid
                             </td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td data-label="J">0</td>
+                            <td data-label="V">0</td>
+                            <td data-label="E">0</td>
+                            <td data-label="D">0</td>
+                            <td data-label="GP">0</td>
+                            <td data-label="GC">0</td>
+                            <td data-label="SG">0</td>
+                            <td data-label="Pts">0</td>
                         </tr>
                         <tr>
-                            <td>2</td>
-                            <td class="team-name"><img src="img/botafogo-logo.png" alt="Botafogo"> Botafogo</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td data-label="Pos">2</td>
+                            <td data-label="Clube" class="team-name"><img src="img/botafogo-logo.png" alt="Botafogo"> Botafogo</td>
+                            <td data-label="J">0</td>
+                            <td data-label="V">0</td>
+                            <td data-label="E">0</td>
+                            <td data-label="D">0</td>
+                            <td data-label="GP">0</td>
+                            <td data-label="GC">0</td>
+                            <td data-label="SG">0</td>
+                            <td data-label="Pts">0</td>
                         </tr>
                         <tr>
-                            <td>3</td>
-                            <td class="team-name"><img src="img/psg-logo.png" alt="PSG"> PSG</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td data-label="Pos">3</td>
+                            <td data-label="Clube" class="team-name"><img src="img/psg-logo.png" alt="PSG"> PSG</td>
+                            <td data-label="J">0</td>
+                            <td data-label="V">0</td>
+                            <td data-label="E">0</td>
+                            <td data-label="D">0</td>
+                            <td data-label="GP">0</td>
+                            <td data-label="GC">0</td>
+                            <td data-label="SG">0</td>
+                            <td data-label="Pts">0</td>
                         </tr>
                         <tr>
-                            <td>4</td>
-                            <td class="team-name"><img src="img/seattle-logo.png" alt="Seattle"> Seattle Sounders</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td data-label="Pos">4</td>
+                            <td data-label="Clube" class="team-name"><img src="img/seattle-logo.png" alt="Seattle"> Seattle Sounders</td>
+                            <td data-label="J">0</td>
+                            <td data-label="V">0</td>
+                            <td data-label="E">0</td>
+                            <td data-label="D">0</td>
+                            <td data-label="GP">0</td>
+                            <td data-label="GC">0</td>
+                            <td data-label="SG">0</td>
+                            <td data-label="Pts">0</td>
                         </tr>
                     </tbody>
                 </table>
@@ -222,8 +229,10 @@
         </div>
     </div>
 
+    <!-- Rodapé -->
     <footer class="footer">
         <div class="footer-container">
+            <!-- Seção da Logo e Descrição do Rodapé -->
             <div class="footer-section">
                 <div class="footer-logo">
                     <img src="img/logo-fifa.png" alt="FIFA Logo">
@@ -236,6 +245,7 @@
                 </p>
             </div>
 
+            <!-- Seção de Navegação do Rodapé -->
             <div class="footer-section">
                 <h3>Navegação</h3>
                 <ul class="footer-nav">
@@ -244,9 +254,11 @@
                     <li><a href="calendario.html">Calendário</a></li>
                     <li><a href="sobre.html">Sobre</a></li>
                     <li><a href="jogos.html">Jogue</a></li>
+                    <li><a href="favorito.html">Favorito</a></li>
                 </ul>
             </div>
 
+            <!-- Seção de Informações do Rodapé -->
             <div class="footer-section">
                 <h3>Informações</h3>
                 <ul class="footer-nav">
@@ -257,6 +269,7 @@
                 </ul>
             </div>
         </div>
+        <!-- Rodapé inferior com direitos autorais -->
         <div class="footer-bottom">
             <p>&copy; 2025 Mundial de Clubes FIFA. Desenvolvido com <span class="footer-heart">♥</span> para os fãs do futebol mundial.</p>
         </div>
