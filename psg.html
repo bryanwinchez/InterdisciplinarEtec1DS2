@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paris Saint-Germain | Mundial de Clubes 2025</title>
+    <link rel="shortcut icon"
+        href="img/psg-logo.png"
+        type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos específicos para a página do PSG -->
+    <style>
+        :root {
+            --cor-primaria: #DA291C;
+            /* Vermelho PSG */
+            --cor-secundaria: #00417E;
+            /* Azul PSG */
+            --texto-claro: #FFFFFF;
+            --gradiente-destaque: linear-gradient(90deg, var(--cor-secundaria), var(--cor-primaria));
+        }
+
+        body {
+            background-image: linear-gradient(rgba(0, 20, 40, 0.7), rgba(0, 20, 40, 0.7)), url('img/paris.jpg');
+            background-attachment: scroll;
+        }
+
+        .player-card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            perspective: 1500px;
+        }
+
+        .player-card {
+            height: 420px;
+            position: relative;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .player-card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .player-front,
+        .player-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #002D56, #001A33);
+            border: 1px solid var(--cor-primaria);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .player-front .player-logo img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--cor-primaria);
+            object-fit: cover;
+            object-position: top;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1.5rem;
+        }
+
+        .player-front h3 {
+            font-size: 1.8rem;
+            color: var(--texto-claro);
+        }
+
+        .player-front .position {
+            color: #ddd;
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        .player-back {
+            transform: rotateY(180deg);
+            justify-content: space-evenly;
+            padding: 2rem;
+        }
+
+        .player-back h3 {
+            font-size: 1.8rem;
+            color: var(--texto-claro);
+        }
+
+        .player-info p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .player-info strong {
+            color: var(--texto-claro);
+            font-weight: 600;
+            text-shadow: 1px 1px 2px var(--cor-primaria);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor"></div>
+
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="img/logo-fifa.png" alt="Logo do Mundial de Clubes FIFA 2025" class="logo">
+        </a>
+        <button class="menu-toggle" aria-label="Abrir Menu">☰</button>
+        <div class="nav-principal">
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="botao active">Início</a></li>
+                    <li><a href="clubes.html" class="botao">Clubes</a></li>
+                    <li><a href="jogos.html" class="botao">Jogue</a></li>
+                    <li><a href="favorito.html" class="botao">Favorito</a></li>
+                    <li><a href="sobre.html" class="botao">Sobre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="glitch" data-text="Paris Saint-Germain">Paris Saint-Germain</h1>
+        <hr class="linha-destaque">
+
+        <div class="card sobre-card" style="margin-bottom: 3rem;">
+            <h2>O Sonho Parisiense</h2>
+            <p>Diretamente da cidade luz, o Paris Saint-Germain combina o glamour da capital francesa com um elenco de
+                estrelas globais. Com um futebol ofensivo e envolvente, o clube busca consolidar sua marca como uma
+                potência, sonhando com a glória máxima no Mundial.</p>
+        </div>
+
+        <h2 class="glitch" data-text="Jogadores em Destaque">Jogadores em Destaque</h2>
+        <hr class="linha-destaque">
+
+        <div class="player-card-container">
+            <!-- Ousmane Dembélé -->
+            <div class="player-card">
+                <div class="player-front">
+                    <div class="player-logo"><img src="img/dembele.png"></div>
+                    <h3>Ousmane Dembélé</h3>
+                    <h4 class="position">Ponta</h4>
+                </div>
+                <div class="player-back">
+                    <h3>Ousmane Dembélé</h3>
+                    <div class="player-info">
+                        <p><strong>Nacionalidade:</strong> Francês</p>
+                        <p><strong>Idade:</strong> 28 anos</p>
+                        <p><strong>Qualidade:</strong> Sua ambidestria e drible imprevisível fazem dele um dos jogadores mais criativos e difíceis de marcar no um contra um.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Désiré Doué -->
+            <div class="player-card">
+                <div class="player-front">
+                    <div class="player-logo"><img src="img/doue.png"></div>
+                    <h3>Désiré Doué</h3>
+                    <h4 class="position">Meio-campista</h4>
+                </div>
+                <div class="player-back">
+                    <h3>Désiré Doué</h3>
+                    <div class="player-info">
+                        <p><strong>Nacionalidade:</strong> Francês</p>
+                        <p><strong>Idade:</strong> 20 anos</p>
+                        <p><strong>Qualidade:</strong> Uma das novas joias do futebol francês, destaca-se pela visão de jogo, técnica apurada e capacidade de criar jogadas.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Bradley Barcola -->
+            <div class="player-card">
+                <div class="player-front">
+                    <div class="player-logo"><img src="img/barcola.png"></div>
+                    <h3>Bradley Barcola</h3>
+                    <h4 class="position">Ponta</h4>
+                </div>
+                <div class="player-back">
+                    <h3>Bradley Barcola</h3>
+                    <div class="player-info">
+                        <p><strong>Nacionalidade:</strong> Francês</p>
+                        <p><strong>Idade:</strong> 22 anos</p>
+                        <p><strong>Qualidade:</strong> Jovem e veloz, Barcola adiciona profundidade e verticalidade ao ataque, sendo uma arma poderosa no contra-ataque.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="index.html" class="botao-grande">
+                <i class="fas fa-arrow-left"></i>
+                Voltar para Inicio
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="img/logo-fifa.png" alt="Logo da FIFA">
+                    <span class="footer-logo-text">Mundial 2025</span>
+                </div>
+                <p class="footer-description">
+                    Acompanhe todas as emoções do Mundial de Clubes FIFA 2025. Os melhores times do mundo se enfrentam
+                    em uma competição histórica.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Navegação</h3>
+                <ul class="footer-nav">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="clubes.html">Clubes</a></li>
+                    <li><a href="jogos.html">Jogue</a></li>
+                    <li><a href="favorito.html">Favorito</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Clubes do Grupo B</h3>
+                <ul class="footer-nav">
+                    <li><a href="psg.html">Paris Saint-Germain</a></li>
+                    <li><a href="atletico.html">Atlético de Madrid</a></li>
+                    <li><a href="botafogo.html">Botafogo</a></li>
+                    <li><a href="seattle.html">Seattle Sounders</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mundial de Clubes FIFA. Desenvolvido com <span class="footer-heart">♥</span> para os fãs do
+                futebol.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

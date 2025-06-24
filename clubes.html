@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clubes | Mundial de Clubes 2025</title>
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="cursor"></div>
 
@@ -30,98 +33,167 @@
     </header>
 
     <main class="container">
-        <h1 class="glitch" data-text="GRUPO B">GRUPO B</h1>
+        <h1 class="glitch" data-text="Classificação">Classificação</h1>
         <hr class="linha-destaque">
-        
-        <div class="teams-container">
-            <!-- PSG -->
-            <div class="team-card" data-team="psg">
-                <div class="team-front">
-                    <div class="team-logo"><img src="img/psg-logo.png" alt="Logo do Paris Saint-Germain"></div>
-                    <h3>Paris Saint-Germain</h3>
-                    <h4 class="country">França</h4>
-                </div>
-                <div class="team-back">
-                    <h3>Paris Saint-Germain</h3>
-                    <div class="team-info">
-                        <p><strong>Fundação:</strong> 1970</p>
-                        <p><strong>Estádio:</strong> Parc des Princes</p>
-                        <p><strong>Títulos Notáveis:</strong> 11x Ligue 1, 14x Copa da França</p>
-                        <p><strong>Classificação:</strong> Ranking UEFA</p>
-                    </div>
-                    <a href="#!" class="team-btn">Ver Detalhes</a>
-                </div>
-            </div>
-
-            <!-- Atlético de Madrid -->
-            <div class="team-card" data-team="atletico">
-                <div class="team-front">
-                    <div class="team-logo"><img src="img/atletico-logo.png" alt="Logo do Atlético de Madrid"></div>
-                    <h3>Atlético de Madrid</h3>
-                    <h4 class="country">Espanha</h4>
-                </div>
-                <div class="team-back">
-                    <h3>Atlético de Madrid</h3>
-                    <div class="team-info">
-                        <p><strong>Fundação:</strong> 1903</p>
-                        <p><strong>Estádio:</strong> Metropolitano</p>
-                        <p><strong>Títulos Notáveis:</strong> 11x La Liga, 10x Copa del Rey</p>
-                        <p><strong>Classificação:</strong> Ranking UEFA</p>
-                    </div>
-                    <a href="#!" class="team-btn">Ver Detalhes</a>
-                </div>
-            </div>
-
-            <!-- Botafogo -->
-            <div class="team-card" data-team="botafogo">
-                <div class="team-front">
-                    <div class="team-logo"><img src="img/botafogo-logo.png" alt="Logo do Botafogo"></div>
-                    <h3>Botafogo</h3>
-                    <h4 class="country">Brasil</h4>
-                </div>
-                <div class="team-back">
-                    <h3>Botafogo</h3>
-                    <div class="team-info">
-                        <p><strong>Fundação:</strong> 1894</p>
-                        <p><strong>Estádio:</strong> Nilton Santos</p>
-                        <p><strong>Títulos Notáveis:</strong> 2x Brasileirão, 1x Libertadores</p>
-                        <p><strong>Classificação:</strong> Campeão Libertadores</p>
-                    </div>
-                    <a href="#!" class="team-btn">Ver Detalhes</a>
-                </div>
-            </div>
-
-            <!-- Seattle Sounders -->
-            <div class="team-card" data-team="seattle">
-                <div class="team-front">
-                    <div class="team-logo"><img src="img/seattle-logo.png" alt="Logo do Seattle Sounders"></div>
-                    <h3>Seattle Sounders</h3>
-                    <h4 class="country">Estados Unidos</h4>
-                </div>
-                <div class="team-back">
-                    <h3>Seattle Sounders</h3>
-                    <div class="team-info">
-                        <p><strong>Fundação:</strong> 2007</p>
-                        <p><strong>Estádio:</strong> Lumen Field</p>
-                        <p><strong>Títulos Notáveis:</strong> 2x MLS Cup, 1x Concacaf</p>
-                        <p><strong>Classificação:</strong> Campeão Concacaf</p>
-                    </div>
-                    <a href="#!" class="team-btn">Ver Detalhes</a>
-                </div>
+        <div class="card">
+            <div class="table-container">
+                <table class="standings">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Clube</th>
+                            <th>J</th>
+                            <th>V</th>
+                            <th>E</th>
+                            <th>D</th>
+                            <th>GP</th>
+                            <th>GC</th>
+                            <th>SG</th>
+                            <th>Pts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Pos">1</td>
+                            <td data-label="Clube" class="team-name"><img src="img/botafogo-logo.png"
+                                    alt="Logo do Botafogo">Botafogo</td>
+                            <td data-label="J">2</td>
+                            <td data-label="V">2</td>
+                            <td data-label="E">0</td>
+                            <td data-label="D">0</td>
+                            <td data-label="GP">3</td>
+                            <td data-label="GC">1</td>
+                            <td data-label="SG">2</td>
+                            <td data-label="Pts">6</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Pos">2</td>
+                            <td data-label="Clube" class="team-name"><img src="img/psg-logo.png" alt="Logo do PSG">PSG
+                            </td>
+                            <td data-label="J">2</td>
+                            <td data-label="V">1</td>
+                            <td data-label="E">0</td>
+                            <td data-label="D">1</td>
+                            <td data-label="GP">4</td>
+                            <td data-label="GC">1</td>
+                            <td data-label="SG">3</td>
+                            <td data-label="Pts">3</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Pos">3</td>
+                            <td data-label="Clube" class="team-name"><img src="img/atletico-logo.png"
+                                    alt="Logo do Atlético de Madrid">Atlético de Madrid</td>
+                            <td data-label="J">2</td>
+                            <td data-label="V">1</td>
+                            <td data-label="E">0</td>
+                            <td data-label="D">1</td>
+                            <td data-label="GP">3</td>
+                            <td data-label="GC">5</td>
+                            <td data-label="SG">-2</td>
+                            <td data-label="Pts">3</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Pos">4</td>
+                            <td data-label="Clube" class="team-name"><img src="img/seattle-logo.png"
+                                    alt="Logo do Seattle Sounders">Seattle Sounders</td>
+                            <td data-label="J">2</td>
+                            <td data-label="V">0</td>
+                            <td data-label="E">0</td>
+                            <td data-label="D">2</td>
+                            <td data-label="GP">2</td>
+                            <td data-label="GC">5</td>
+                            <td data-label="SG">-3</td>
+                            <td data-label="Pts">0</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <h1 class="glitch" data-text="Análise dos Times" style="margin-top: 4rem;">Análise dos Times</h1>
+        <h2 class="glitch" data-text="Partidas do Grupo B" style="margin-top: 4rem; font-size: 2.5rem;">Partidas do
+            Grupo B</h2>
         <hr class="linha-destaque">
-        
         <div class="grid-container">
-            <div class="card">
-                <h3>Comparativo de Atributos</h3>
-                <div class="chart-container"><canvas id="radarChart"></canvas></div>
+            <!-- Partida 1 -->
+            <div class="card match-card">
+                <div class="match-date">15 de Junho, 2025</div>
+                <div class="match-teams">
+                    <div class="team"><img src="img/psg-logo.png" alt="Logo do PSG"><span>PSG</span></div>
+                    <div class="match-info">
+                        <div class="match-time">16:00</div>
+                        <div class="match-venue">Rose Bowl, Pasadena</div>
+                    </div>
+                    <div class="team"><img src="img/atletico-logo.png"
+                            alt="Logo do Atlético de Madrid"><span>Atlético</span></div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Probabilidade de Avançar</h3>
-                <div class="chart-container"><canvas id="probabilityChart"></canvas></div>
+            <!-- Partida 2 -->
+            <div class="card match-card">
+                <div class="match-date">15 de Junho, 2025</div>
+                <div class="match-teams">
+                    <div class="team"><img src="img/botafogo-logo.png" alt="Logo do Botafogo"><span>Botafogo</span>
+                    </div>
+                    <div class="match-info">
+                        <div class="match-time">19:00</div>
+                        <div class="match-venue">Lumen Field, Seattle</div>
+                    </div>
+                    <div class="team"><img src="img/seattle-logo.png"
+                            alt="Logo do Seattle Sounders"><span>Seattle</span></div>
+                </div>
+            </div>
+            <!-- Partida 3 -->
+            <div class="card match-card">
+                <div class="match-date">19 de Junho, 2025</div>
+                <div class="match-teams">
+                    <div class="team"><img src="img/psg-logo.png" alt="Logo do PSG"><span>PSG</span></div>
+                    <div class="match-info">
+                        <div class="match-time">16:00</div>
+                        <div class="match-venue">MetLife Stadium, NJ</div>
+                    </div>
+                    <div class="team"><img src="img/botafogo-logo.png" alt="Logo do Botafogo"><span>Botafogo</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Partida 4 -->
+            <div class="card match-card">
+                <div class="match-date">19 de Junho, 2025</div>
+                <div class="match-teams">
+                    <div class="team"><img src="img/atletico-logo.png"
+                            alt="Logo do Atlético de Madrid"><span>Atlético</span></div>
+                    <div class="match-info">
+                        <div class="match-time">19:00</div>
+                        <div class="match-venue">SoFi Stadium, LA</div>
+                    </div>
+                    <div class="team"><img src="img/seattle-logo.png"
+                            alt="Logo do Seattle Sounders"><span>Seattle</span></div>
+                </div>
+            </div>
+            <!-- Partida 5 -->
+            <div class="card match-card">
+                <div class="match-date">23 de Junho, 2025</div>
+                <div class="match-teams">
+                    <div class="team"><img src="img/psg-logo.png" alt="Logo do PSG"><span>PSG</span></div>
+                    <div class="match-info">
+                        <div class="match-time">16:00</div>
+                        <div class="match-venue">Hard Rock Stadium, Miami</div>
+                    </div>
+                    <div class="team"><img src="img/seattle-logo.png"
+                            alt="Logo do Seattle Sounders"><span>Seattle</span></div>
+                </div>
+            </div>
+            <!-- Partida 6 -->
+            <div class="card match-card">
+                <div class="match-date">23 de Junho, 2025</div>
+                <div class="match-teams">
+                    <div class="team"><img src="img/atletico-logo.png"
+                            alt="Logo do Atlético de Madrid"><span>Atlético</span></div>
+                    <div class="match-info">
+                        <div class="match-time">19:00</div>
+                        <div class="match-venue">Mercedes-Benz Stadium, Atlanta</div>
+                    </div>
+                    <div class="team"><img src="img/botafogo-logo.png" alt="Logo do Botafogo"><span>Botafogo</span>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -134,15 +206,16 @@
                     <span class="footer-logo-text">Mundial 2025</span>
                 </div>
                 <p class="footer-description">
-                    Acompanhe todas as emoções do Mundial de Clubes FIFA 2025. Os melhores times do mundo se enfrentam em uma competição histórica.
+                    Acompanhe todas as emoções do Mundial de Clubes FIFA 2025. Os melhores times do mundo se enfrentam
+                    em uma competição histórica.
                 </p>
             </div>
             <div class="footer-section">
                 <h3>Navegação</h3>
                 <ul class="footer-nav">
                     <li><a href="index.html" class="botao">Início</a></li>
-                    <li><a href="clubes.html" class="botao active">Clubes</a></li>
-                    <li><a href="jogos.html" class="botao">Jogue</a></li>
+                    <li><a href="clubes.html" class="botao">Clubes</a></li>
+                    <li><a href="jogos.html" class="botao active">Jogue</a></li>
                     <li><a href="favorito.html" class="botao">Favorito</a></li>
                     <li><a href="sobre.html" class="botao">Sobre</a></li>
                 </ul>
@@ -158,11 +231,13 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Mundial de Clubes FIFA. Desenvolvido com <span class="footer-heart">♥</span> para os fãs do futebol.</p>
+            <p>&copy; 2025 Mundial de Clubes FIFA. Desenvolvido com <span class="footer-heart">♥</span> para os fãs do
+                futebol.</p>
         </div>
     </footer>
 
-    <script src="main.js"></script>
     <script src="script.js"></script>
+
 </body>
+
 </html>

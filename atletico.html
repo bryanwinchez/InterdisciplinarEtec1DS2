@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlético de Madrid | Mundial de Clubes 2025</title>
+    <link rel="shortcut icon"
+        href="img/atletico-logo.png"
+        type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos específicos para a página do Atlético -->
+    <style>
+        :root {
+            --cor-primaria: #CE1126;
+            /* Vermelho Atlético */
+            --cor-secundaria: #272E61;
+            /* Azul Atlético */
+            --texto-claro: #FFFFFF;
+            --gradiente-destaque: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
+        }
+
+        body {
+            background-image: linear-gradient(rgba(10, 10, 20, 0.6), rgba(10, 10, 20, 0.6)), url('img/madrid.jpg');
+            background-attachment: scroll;
+        }
+
+        .player-card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            perspective: 1500px;
+        }
+
+        .player-card {
+            height: 420px;
+            position: relative;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .player-card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .player-front,
+        .player-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #a80a1e, #800000);
+            border: 1px solid var(--cor-secundaria);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .player-front .player-logo img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--cor-secundaria);
+            object-fit: cover;
+            object-position: top;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1.5rem;
+        }
+
+        .player-front h3 {
+            font-size: 1.8rem;
+            color: var(--texto-claro);
+        }
+
+        .player-front .position {
+            color: #ddd;
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        .player-back {
+            transform: rotateY(180deg);
+            justify-content: space-evenly;
+            padding: 2rem;
+        }
+
+        .player-back h3 {
+            font-size: 1.8rem;
+            color: var(--texto-claro);
+        }
+
+        .player-info p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .player-info strong {
+            color: var(--texto-claro);
+            font-weight: 600;
+            text-shadow: 1px 1px 2px var(--cor-secundaria);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor"></div>
+
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="img/logo-fifa.png" alt="Logo do Mundial de Clubes FIFA 2025" class="logo">
+        </a>
+        <button class="menu-toggle" aria-label="Abrir Menu">☰</button>
+        <div class="nav-principal">
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="botao active">Início</a></li>
+                    <li><a href="clubes.html" class="botao">Clubes</a></li>
+                    <li><a href="jogos.html" class="botao">Jogue</a></li>
+                    <li><a href="favorito.html" class="botao">Favorito</a></li>
+                    <li><a href="sobre.html" class="botao">Sobre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="glitch" data-text="Atlético de Madrid">Atlético de Madrid</h1>
+        <hr class="linha-destaque">
+
+        <div class="card sobre-card" style="margin-bottom: 3rem;">
+            <h2>Coragem e Coração</h2>
+            <p>Com a garra e a intensidade que definem a capital espanhola, o Atlético de Madrid é sinônimo de luta e
+                paixão. Os Colchoneros são conhecidos por sua defesa sólida e um espírito de equipe inabalável, prontos
+                para superar qualquer desafio com "coragem e coração".</p>
+        </div>
+
+        <h2 class="glitch" data-text="Jogadores em Destaque">Jogadores em Destaque</h2>
+        <hr class="linha-destaque">
+
+        <div class="player-card-container">
+            <!-- Griezmann -->
+            <div class="player-card">
+                <div class="player-front">
+                    <div class="player-logo"><img src="img/griezmann.png"></div>
+                    <h3>Antoine Griezmann</h3>
+                    <h4 class="position">Atacante</h4>
+                </div>
+                <div class="player-back">
+                    <h3>Antoine Griezmann</h3>
+                    <div class="player-info">
+                        <p><strong>Nacionalidade:</strong> Francês</p>
+                        <p><strong>Idade:</strong> 34 anos</p>
+                        <p><strong>Qualidade:</strong> A alma da equipe. Um jogador de inteligência tática rara, que flutua entre o meio e o ataque com a mesma letalidade.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Julián Álvarez -->
+            <div class="player-card">
+                <div class="player-front">
+                    <div class="player-logo"><img src="img/alvarez.png"></div>
+                    <h3>Julián Álvarez</h3>
+                    <h4 class="position">Atacante</h4>
+                </div>
+                <div class="player-back">
+                    <h3>Julián Álvarez</h3>
+                    <div class="player-info">
+                        <p><strong>Nacionalidade:</strong> Argentino</p>
+                        <p><strong>Idade:</strong> 25 anos</p>
+                        <p><strong>Qualidade:</strong> Campeão do mundo, "La Araña" é um atacante moderno, implacável na pressão e com uma capacidade incrível de finalização.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Jan Oblak -->
+            <div class="player-card">
+                <div class="player-front">
+                    <div class="player-logo"><img src="img/oblak.png"></div>
+                    <h3>Jan Oblak</h3>
+                    <h4 class="position">Goleiro</h4>
+                </div>
+                <div class="player-back">
+                    <h3>Jan Oblak</h3>
+                    <div class="player-info">
+                        <p><strong>Nacionalidade:</strong> Esloveno</p>
+                        <p><strong>Idade:</strong> 32 anos</p>
+                        <p><strong>Qualidade:</strong> Uma muralha no gol. Seus reflexos apurados e segurança inabalável o colocam entre os melhores goleiros do mundo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="index.html" class="botao-grande">
+                <i class="fas fa-arrow-left"></i>
+                Voltar para Inicio
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="img/logo-fifa.png" alt="Logo da FIFA">
+                    <span class="footer-logo-text">Mundial 2025</span>
+                </div>
+                <p class="footer-description">
+                    Acompanhe todas as emoções do Mundial de Clubes FIFA 2025. Os melhores times do mundo se enfrentam
+                    em uma competição histórica.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Navegação</h3>
+                <ul class="footer-nav">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="clubes.html">Clubes</a></li>
+                    <li><a href="jogos.html">Jogue</a></li>
+                    <li><a href="favorito.html">Favorito</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Clubes do Grupo B</h3>
+                <ul class="footer-nav">
+                    <li><a href="psg.html">Paris Saint-Germain</a></li>
+                    <li><a href="atletico.html">Atlético de Madrid</a></li>
+                    <li><a href="botafogo.html">Botafogo</a></li>
+                    <li><a href="seattle.html">Seattle Sounders</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mundial de Clubes FIFA. Desenvolvido com <span class="footer-heart">♥</span> para os fãs do
+                futebol.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

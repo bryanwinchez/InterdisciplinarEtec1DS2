@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 labels: ['Botafogo', 'PSG', 'Atlético', 'Seattle'],
                 datasets: [{
                     data: [45, 30, 20, 5],
-                    backgroundColor: ['rgba(24, 20, 22, 0.8)', 'rgba(255, 0, 85, 0.8)', 'rgba(0, 217, 255, 0.8)', 'rgba(46, 67, 48, 0.8)'],
+                    backgroundColor: ['rgba(71, 71, 71, 0.8)', 'rgba(255, 0, 85, 0.8)', 'rgba(0, 217, 255, 0.8)', 'rgba(46, 67, 48, 0.8)'],
                     borderColor: ['#0a0a14'],
                     borderWidth: 2,
                     hoverOffset: 8

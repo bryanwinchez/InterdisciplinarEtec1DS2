@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seattle Sounders | Mundial de Clubes 2025</title>
+    <link rel="shortcut icon"
+        href="img/seattle-logo.png"
+        type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos específicos para a página do Seattle Sounders -->
+    <style>
+        :root {
+            --cor-primaria: #00573A;
+            /* Rave Green */
+            --cor-secundaria: #5D973D;
+            /* Sounder Blue (adjusted for visibility) */
+            --texto-claro: #FFFFFF;
+            --gradiente-destaque: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
+        }
+
+        body {
+            background-image: linear-gradient(rgba(0, 20, 15, 0.7), rgba(0, 20, 15, 0.7)), url('img/seattle.jpg');
+            background-attachment: scroll;
+        }
+
+        .player-card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            perspective: 1500px;
+        }
+
+        .player-card {
+            height: 420px;
+            position: relative;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .player-card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .player-front,
+        .player-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #00452E, #002B1D);
+            border: 1px solid var(--cor-secundaria);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .player-front .player-logo img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--cor-secundaria);
+            object-fit: cover;
+            object-position: top;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1.5rem;
+        }
+
+        .player-front h3 {
+            font-size: 1.8rem;
+            color: var(--texto-claro);
+        }
+
+        .player-front .position {
+            color: #ddd;
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        .player-back {
+            transform: rotateY(180deg);
+            justify-content: space-evenly;
+            padding: 2rem;
+        }
+
+        .player-back h3 {
+            font-size: 1.8rem;
+            color: var(--texto-claro);
+        }
+
+        .player-info p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .player-info strong {
+            color: #FFFFFF;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px var(--cor-primaria);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor"></div>
+
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="img/logo-fifa.png" alt="Logo do Mundial de Clubes FIFA 2025" class="logo">
+        </a>
+        <button class="menu-toggle" aria-label="Abrir Menu">☰</button>
+        <div class="nav-principal">
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="botao active">Início</a></li>
+                    <li><a href="clubes.html" class="botao">Clubes</a></li>
+                    <li><a href="jogos.html" class="botao">Jogue</a></li>
+                    <li><a href="favorito.html" class="botao">Favorito</a></li>
+                    <li><a href="sobre.html" class="botao">Sobre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="glitch" data-text="Seattle Sounders">Seattle Sounders</h1>
+        <hr class="linha-destaque">
+
+        <div class="card sobre-card" style="margin-bottom: 3rem;">
+            <h2>O Orgulho da Cidade Esmeralda</h2>
+            <p>Representando a força crescente do futebol na América do Norte, o Seattle Sounders vem da vibrante Cidade
+                Esmeralda. Conhecidos por sua torcida apaixonada e um estilo de jogo organizado, os Sounders estão
+                prontos para mostrar seu valor e surpreender no palco mundial.</p>
+        </div>
+
+        <h2 class="glitch" data-text="Jogadores em Destaque">Jogadores em Destaque</h2>
+        <hr class="linha-destaque">
+
+        <div class="player-card-container">
+            <!-- Jordan Morris -->
+            <div class="player-card">
+                <div class="player-front">
+                    <div class="player-logo"><img src="img/morris.png" alt="Foto de Jordan Morris" onerror="this.onerror=null;this.src='https://placehold.co/150x150/00573A/FFFFFF/jpg?text=Morris';"></div>
+                    <h3>Jordan Morris</h3>
+                    <h4 class="position">Atacante</h4>
+                </div>
+                <div class="player-back">
+                    <h3>Jordan Morris</h3>
+                    <div class="player-info">
+                        <p><strong>Nacionalidade:</strong> Americano</p>
+                        <p><strong>Idade:</strong> 30 anos</p>
+                        <p><strong>Qualidade:</strong> Um ícone do clube, sua combinação de velocidade e força o torna uma ameaça constante, seja como ponta ou atacante central.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Albert Rusnák -->
+            <div class="player-card">
+                <div class="player-front">
+                    <div class="player-logo"><img src="img/rusnak.png" alt="Foto de Albert Rusnák" onerror="this.onerror=null;this.src='https://placehold.co/150x150/00573A/FFFFFF/jpg?text=Rusnák';"></div>
+                    <h3>Albert Rusnák</h3>
+                    <h4 class="position">Meio-campista</h4>
+                </div>
+                <div class="player-back">
+                    <h3>Albert Rusnák</h3>
+                    <div class="player-info">
+                        <p><strong>Nacionalidade:</strong> Eslovaco</p>
+                        <p><strong>Idade:</strong> 30 anos</p>
+                        <p><strong>Qualidade:</strong> O camisa 10 da equipe, dita o ritmo do jogo com passes precisos, visão de jogo e cobranças de falta perigosas.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Daniel Musovski -->
+            <div class="player-card">
+                <div class="player-front">
+                    <div class="player-logo"><img src="img/musovski.png"></div>
+                    <h3>Daniel Musovski</h3>
+                    <h4 class="position">Atacante</h4>
+                </div>
+                <div class="player-back">
+                    <h3>Daniel Musovski</h3>
+                    <div class="player-info">
+                        <p><strong>Nacionalidade:</strong> Americano</p>
+                        <p><strong>Idade:</strong> 29 anos</p>
+                        <p><strong>Qualidade:</strong> Atacante versátil que contribui com gols e um trabalho incansável na frente, pressionando as defesas adversárias.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="index.html" class="botao-grande">
+                <i class="fas fa-arrow-left"></i>
+                Voltar para Inicio
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="img/logo-fifa.png" alt="Logo da FIFA">
+                    <span class="footer-logo-text">Mundial 2025</span>
+                </div>
+                <p class="footer-description">
+                    Acompanhe todas as emoções do Mundial de Clubes FIFA 2025. Os melhores times do mundo se enfrentam
+                    em uma competição histórica.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Navegação</h3>
+                <ul class="footer-nav">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="clubes.html">Clubes</a></li>
+                    <li><a href="jogos.html">Jogue</a></li>
+                    <li><a href="favorito.html">Favorito</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Clubes do Grupo B</h3>
+                <ul class="footer-nav">
+                    <li><a href="psg.html">Paris Saint-Germain</a></li>
+                    <li><a href="atletico.html">Atlético de Madrid</a></li>
+                    <li><a href="botafogo.html">Botafogo</a></li>
+                    <li><a href="seattle.html">Seattle Sounders</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mundial de Clubes FIFA. Desenvolvido com <span class="footer-heart">♥</span> para os fãs do
+                futebol.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
