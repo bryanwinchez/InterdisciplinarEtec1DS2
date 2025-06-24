@@ -1,9 +1,7 @@
 /*
  * NOME DO ARQUIVO: style.css
  * DESCRIÇÃO: Folha de estilos principal e unificada para todo o site do Mundial de Clubes 2025.
- * Contém todas as estilizações, desde variáveis globais e resets até componentes
- * específicos de cada página e regras de responsividade.
- * VERSÃO: 2.1 (Correção na animação 'glitch')
+ * VERSÃO: 2.2 (Correção para habilitar flip do card no mobile)
  */
 
 /* -------------------
@@ -42,7 +40,7 @@ body {
     background-image: url('img/fundo-fifa.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll; /* Alterado para rolar com a página */
     color: var(--texto-claro);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -119,18 +117,15 @@ img {
 .glitch::before {
     left: 2px;
     text-shadow: -2px 0 var(--cor-secundaria);
-    /* Animação contínua e mais sutil */
     animation: glitch-anim-1 3s infinite linear alternate-reverse;
 }
 
 .glitch::after {
     left: -2px;
     text-shadow: 2px 0 var(--cor-primaria);
-    /* Animação contínua e mais sutil */
     animation: glitch-anim-2 4s infinite linear alternate-reverse;
 }
 
-/* Keyframes para a animação contínua */
 @keyframes glitch-anim-1 {
     0% { clip-path: polygon(0 2%, 100% 2%, 100% 40%, 0 40%); }
     25% { clip-path: polygon(0 50%, 100% 50%, 100% 90%, 0 90%); }
@@ -174,7 +169,6 @@ img {
     .cursor { display: block; }
 }
 
-/* O restante do CSS permanece o mesmo... */
 /* -------------------
  * CABEÇALHO E NAVEGAÇÃO
  * ------------------- */
@@ -390,7 +384,8 @@ header {
     transform-style: preserve-3d;
     cursor: pointer;
 }
-.team-card:hover {
+/* ATUALIZAÇÃO: A animação agora é controlada por uma classe, não pelo hover. */
+.team-card.is-flipped {
     transform: rotateY(180deg);
 }
 .team-front, .team-back {
@@ -510,23 +505,20 @@ header {
     transform: scale(1.05);
 }
 
-/* Adicione este código ao final do seu arquivo style.css */
-
 #mensagem.sucesso {
-    color: #28a745; /* Verde para sucesso */
+    color: #28a745; 
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 #mensagem.erro {
-    color: #dc3545; /* Vermelho para erro */
+    color: #dc3545;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
-/* Estilo padrão (quando não for sucesso nem erro) */
 #mensagem {
-    color: var(--cor-primaria); /* Amarelo padrão */
+    color: var(--cor-primaria);
     font-weight: 500;
     transition: color 0.3s ease;
 }
@@ -546,7 +538,6 @@ header {
     opacity: 0.9;
 }
 
-/* --- BOTÃO GRANDE (reutilizável) --- */
 .botao-grande {
     display: inline-block;
     padding: 1rem 2.5rem;
@@ -571,7 +562,6 @@ header {
     margin-right: 10px;
 }
 
-/* --- SEÇÃO DA PESQUISA (index.html) --- */
 .pesquisa-secao {
     margin-top: 5rem;
     padding: 3rem 1.5rem;
@@ -587,7 +577,6 @@ header {
     line-height: 1.7;
 }
 
-/* --- MODAL E FORMULÁRIO --- */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -642,7 +631,6 @@ header {
     transform: scale(1.1);
 }
 
-/* --- ESTILOS DO FORMULÁRIO --- */
 #pesquisaForm {
     display: flex;
     flex-direction: column;
@@ -672,12 +660,11 @@ header {
     box-shadow: 0 0 10px rgba(236, 207, 38, 0.3);
 }
 
-/* --- RATING DE ESTRELAS --- */
 .rating-estrelas {
     display: flex;
     gap: 0.5rem;
     font-size: 1.8rem;
-    color: #555; /* Cor da estrela inativa */
+    color: #555;
     cursor: pointer;
 }
 .rating-estrelas i {
@@ -692,28 +679,13 @@ header {
     transform: scale(1.1);
 }
 
-/* --- MENSAGENS DE FEEDBACK --- */
-#mensagem.sucesso {
-    color: #28a745;
-    font-weight: 600;
-}
-#mensagem.erro {
-    color: #dc3545;
-    font-weight: 600;
-}
-
-/*
-  Adicione este código ao final do seu ficheiro style.css
-  para estilizar as mensagens de sucesso e erro do formulário.
-*/
-
 #formStatus {
     margin-bottom: 1rem;
     padding: 0.8rem;
     border-radius: 8px;
     text-align: center;
     font-weight: 500;
-    display: none; /* Escondido por padrão */
+    display: none;
 }
 
 #formStatus.sucesso {
@@ -730,8 +702,6 @@ header {
     border: 1px solid rgba(220, 53, 69, 0.5);
 }
 
-
-
 /* -------------------
  * RESPONSIVIDADE
  * ------------------- */
@@ -742,17 +712,16 @@ header {
 }
 
 @media (max-width: 768px) {
-    /* --- Menu Mobile --- */
     .menu-toggle { display: block; }
     .nav-principal {
-        order: 3; /* Coloca o menu abaixo do logo e do botão */
+        order: 3;
         width: 100%;
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease-in-out;
     }
     .nav-principal.active { 
-        max-height: 500px; /* Altura suficiente para os links */
+        max-height: 500px;
         margin-top: 1rem;
     }
     .nav-principal nav ul {
@@ -763,7 +732,6 @@ header {
     }
     header { flex-wrap: wrap; }
 
-    /* --- Tabela Responsiva --- */
     .standings thead { display: none; }
     .standings tr {
         display: block;
@@ -796,34 +764,11 @@ header {
     
     .match-teams { flex-direction: column; gap: 1rem; }
 
-    /* --- Cards de Times (desativa flip) --- */
-    .team-card, .team-card:hover { 
-        transform: none; 
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-        background: var(--gradiente-card);
-        border-radius: 15px;
-        cursor: default;
-    }
-    .team-front, .team-back {
-        position: static;
-        transform: none;
-        box-shadow: none;
-        margin: 0;
-        padding: 0;
-        background: none;
-        width: 100%;
-        height: auto;
-    }
-    .team-back { display: block; margin-top: 2rem; } /* Mostra o verso no mobile, abaixo do front */
+    /* ATUALIZAÇÃO: Removidas as regras que desativavam o flip dos cards no mobile */
     .teams-container {
        display: grid;
        grid-template-columns: 1fr; /* Garante uma coluna só */
-       perspective: none;
+       /* A propriedade 'perspective' é herdada da regra global, permitindo a animação 3D */
        gap: 1.5rem;
     }
 
