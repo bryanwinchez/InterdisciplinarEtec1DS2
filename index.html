@@ -9,11 +9,125 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- ESTILOS DA TELA DE CARREGAMENTO -->
+    <style>
+        #loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0a0a14;
+            display: flex;
+            flex-direction: column; /* Organiza os itens verticalmente */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
+            opacity: 1;
+        }
+
+        #loader-wrapper.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .trophy-loader {
+            width: 160px;
+            height: 160px;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
+            animation: float 3s ease-in-out infinite;
+            margin-bottom: 40px; /* Espaço entre o troféu e a barra */
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        /* Container da barra de carregamento */
+        .loading-bar-container {
+            width: 250px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        /* Barra de carregamento interna */
+        .loading-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #B8860B, #FFD700, #F7DE7C);
+            border-radius: 5px;
+            /* A animação dura 3s para corresponder ao tempo do JS */
+            animation: fillBar 3s ease-out forwards;
+        }
+
+        @keyframes fillBar {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        /* Texto "A CARREGAR..." */
+        .loading-text {
+            margin-top: 15px;
+            color: #FFD700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+    </style>
 </head>
 
 <body>
     <!-- Efeito de animação do cursor (ativado em telas grandes via CSS) -->
     <div class="cursor"></div>
+
+    <!-- ========= TELA DE CARREGAMENTO (LOADER COM NOVO TROFÉU E BARRA) ========= -->
+    <div id="loader-wrapper">
+        <!-- SVG do Novo Troféu Realista -->
+        <svg class="trophy-loader" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+             <defs>
+                <linearGradient id="realGold" x1="50%" y1="0%" x2="50%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF8E1" />
+                    <stop offset="50%" stop-color="#FFD700" />
+                    <stop offset="100%" stop-color="#B8860B" />
+                </linearGradient>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            <g fill="url(#realGold)" stroke="#8C6400" stroke-width="1">
+                <!-- Base -->
+                <path d="M 30 98 H 70 L 75 90 H 25 Z" />
+                <rect x="42" y="80" width="16" height="10" />
+
+                <!-- Corpo e taça -->
+                <path d="M50,80 C 65,75 75,60 75,40 L 80,10 H 20 L 25,40 C 25,60 35,75 50,80 Z" />
+                
+                <!-- Detalhe do topo da taça -->
+                <ellipse cx="50" cy="10" rx="30" ry="4" />
+                
+                <!-- Alças -->
+                <path d="M80,30 C 95,25 95,45 80,50" stroke-width="4" stroke-linecap="round" fill="none" />
+                <path d="M20,30 C 5,25 5,45 20,50" stroke-width="4" stroke-linecap="round" fill="none" />
+            </g>
+        </svg>
+
+        <div class="loading-bar-container">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-text">A carregar...</div>
+    </div>
 
     <header>
         <a href="index.html" class="logo-link">
@@ -180,7 +294,7 @@
         </div>
     </footer>
 
-        <!-- HTML DO MODAL DO FORMULÁRIO (ATUALIZADO PARA FORMSUBMIT) -->
+    <!-- HTML DO MODAL DO FORMULÁRIO (ATUALIZADO PARA FORMSUBMIT) -->
     <div id="pesquisaModal" class="modal-overlay">
         <div class="modal-conteudo">
             <button id="fecharModalBtn" class="modal-fechar">&times;</button>

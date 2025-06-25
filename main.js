@@ -3,12 +3,12 @@
  * DESCRIÇÃO: Script para inicialização dos gráficos da Chart.js
  * na página de Clubes.
  */
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
     // Define a fonte padrão para todos os gráficos
     Chart.defaults.font.family = "'Poppins', 'Arial', sans-serif";
     Chart.defaults.color = 'rgba(255, 255, 255, 0.7)';
-    
+
     // --- GRÁFICO RADAR ---
     if (document.getElementById('radarChart')) {
         const radarCtx = document.getElementById('radarChart').getContext('2d');
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     legend: { position: 'bottom', labels: { color: 'rgba(255, 255, 255, 0.8)', boxWidth: 15, padding: 20 } },
                     tooltip: {
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 return context.label + ': ' + context.raw + '% de chance';
                             }
                         }
@@ -74,3 +74,18 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+// --- NOVO CÓDIGO PARA O LOADER ---
+window.addEventListener('load', () => {
+    // Seleciona o elemento principal do loader
+    const loader = document.getElementById('loader-wrapper');
+
+    // Define um tempo de espera de 5 segundos (5000 milissegundos) antes de esconder o loader.
+    setTimeout(() => {
+        if (loader) {
+            // Adiciona a classe 'hidden' para iniciar a transição de opacidade
+            loader.classList.add('hidden');
+        }
+    }, 5000); 
+});
+
