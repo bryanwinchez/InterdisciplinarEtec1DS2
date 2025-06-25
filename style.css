@@ -793,3 +793,41 @@ header {
     .logo { width: 100px; }
     .fav-teams-container img { width: 90px; height: 90px; }
 }
+
+/* ======================================================= */
+/* NOVA SEÇÃO: OTIMIZAÇÕES PARA SMART TV E TELAS GRANDES   */
+/* ======================================================= */
+@media (min-width: 1920px) {
+
+    /* Aumenta o tamanho da fonte base. 
+       Tudo que usa 'rem' vai escalar junto! */
+    :root {
+        font-size: 18px;
+    }
+
+    /* Aumenta o tamanho dos títulos principais para melhor legibilidade */
+    .glitch {
+        font-size: clamp(4rem, 6vw, 5.5rem);
+    }
+
+    /* Aumenta o container principal para usar melhor o espaço da tela */
+    .container {
+        max-width: 1400px;
+    }
+
+    /* Aumenta o espaçamento entre os cards */
+    .teams-container, .grid-container, .games-grid, .player-card-container {
+        gap: 3rem;
+    }
+}
+
+/* Para telas 4K, podemos aumentar ainda mais */
+@media (min-width: 3840px) {
+    :root {
+        font-size: 22px;
+    }
+
+    .container {
+        max-width: 1800px;
+    }
+}
