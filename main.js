@@ -1,8 +1,4 @@
-/*
- * NOME DO ARQUIVO: main.js
- * DESCRIÇÃO: Script para inicialização dos gráficos da Chart.js
- * na página de Clubes.
- */
+// --- CÓDIGO DOS GRÁFICOS ---
 document.addEventListener("DOMContentLoaded", function () {
 
     // Define a fonte padrão para todos os gráficos
@@ -75,17 +71,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// --- NOVO CÓDIGO PARA O LOADER ---
+
+// --- LÓGICA DO LOADER (COM CONTROLO DE SESSÃO) ---
 window.addEventListener('load', () => {
-    // Seleciona o elemento principal do loader
     const loader = document.getElementById('loader-wrapper');
 
-    // Define um tempo de espera de 5 segundos (5000 milissegundos) antes de esconder o loader.
-    setTimeout(() => {
+    // Verifica se o loader já foi exibido nesta sessão
+    if (sessionStorage.getItem('loaderShown')) {
+        // Se já foi mostrado, esconde-o imediatamente
         if (loader) {
-            // Adiciona a classe 'hidden' para iniciar a transição de opacidade
-            loader.classList.add('hidden');
+            loader.style.display = 'none';
         }
-    }, 5000); 
-});
+    } else {
+        // Se é a primeira visita na sessão, mostra o loader e depois esconde-o
+        if (loader) {
+            // Marca que o loader foi exibido para não aparecer novamente
+            sessionStorage.setItem('loaderShown', 'true');
 
+            // Define um tempo de 3 segundos para o loader desaparecer
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 3000); 
+        }
+    }
+});
