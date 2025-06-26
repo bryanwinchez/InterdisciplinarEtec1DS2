@@ -1,5 +1,31 @@
 // --- CÓDIGO DOS GRÁFICOS ---
 document.addEventListener("DOMContentLoaded", function () {
+    // --- LÓGICA DO LOADER (CORRIGIDA PARA EVITAR FLICKER) ---
+    const loader = document.getElementById('loader-wrapper');
+
+    if (loader) {
+        // Verifica se o loader já foi exibido nesta sessão
+        if (sessionStorage.getItem('loaderShown')) {
+            // Se já foi mostrado, esconde-o imediatamente para evitar o "flicker"
+            loader.style.display = 'none';
+        } else {
+            // Se é a primeira visita, espera a PÁGINA INTEIRA carregar (incluindo imagens)
+            // para garantir que a animação seja suave sobre o conteúdo completo.
+            window.addEventListener('load', () => {
+                // Marca que o loader foi exibido para não aparecer novamente
+                sessionStorage.setItem('loaderShown', 'true');
+
+                // Define um tempo de 3 segundos para o loader desaparecer com a animação
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                }, 3000);
+            });
+        }
+    }
+
+
+    // --- CÓDIGO DOS GRÁFICOS ---
+    // A inicialização dos gráficos pode ocorrer enquanto o loader ainda está visível na primeira visita.
 
     // Define a fonte padrão para todos os gráficos
     Chart.defaults.font.family = "'Poppins', 'Arial', sans-serif";
@@ -68,30 +94,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
-    }
-});
-
-
-// --- LÓGICA DO LOADER (COM CONTROLO DE SESSÃO) ---
-window.addEventListener('load', () => {
-    const loader = document.getElementById('loader-wrapper');
-
-    // Verifica se o loader já foi exibido nesta sessão
-    if (sessionStorage.getItem('loaderShown')) {
-        // Se já foi mostrado, esconde-o imediatamente
-        if (loader) {
-            loader.style.display = 'none';
-        }
-    } else {
-        // Se é a primeira visita na sessão, mostra o loader e depois esconde-o
-        if (loader) {
-            // Marca que o loader foi exibido para não aparecer novamente
-            sessionStorage.setItem('loaderShown', 'true');
-
-            // Define um tempo de 3 segundos para o loader desaparecer
-            setTimeout(() => {
-                loader.classList.add('hidden');
-            }, 3000); 
-        }
     }
 });
