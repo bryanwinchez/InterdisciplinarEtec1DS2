@@ -320,11 +320,13 @@ header {
     overflow: hidden;
 }
 .standings th, .standings td {
-    padding: 1rem;
-    text-align: center;
+    padding: 12px;
+    vertical-align: middle;
+    height: 60px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .standings th {
+    text-align: left;
     background-color: rgba(255, 255, 255, 0.05);
     font-weight: 600;
     text-transform: uppercase;
@@ -335,11 +337,11 @@ header {
 .team-name {
     display:flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     text-align: left;
     font-weight: 500;
 }
-.team-name img { width: 50px; height: 50px; object-fit: contain; }
+.team-name img { width: 30px; height: 30px; object-fit: contain; }
 
 .match-card .match-date {
     font-size: 1.1rem;
