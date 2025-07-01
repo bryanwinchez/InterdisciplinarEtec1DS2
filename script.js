@@ -1,7 +1,7 @@
 /*
  * NOME DO ARQUIVO: script.js
  * DESCRIÇÃO: Script principal e unificado para interatividade do site.
- * VERSÃO: 9.0 - Adicionada funcionalidade de flip de cards no mobile e desktop
+ * VERSÃO: 10.0 - Adicionado módulo de segurança anti-inspeção.
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     iniciarMenuMobile();
     iniciarPaginaFavoritos();
     iniciarModalPesquisa();
-    iniciarFlipCards(); // Adiciona a nova funcionalidade
+    iniciarFlipCards();
+    iniciarProtecaoAntiInspecao(); // Adiciona o novo módulo de segurança
 });
 
 /**
@@ -181,5 +182,56 @@ function iniciarFlipCards() {
         });
     } catch (error) {
         console.error("Erro ao iniciar a funcionalidade de flip dos cards:", error);
+    }
+}
+
+/**
+ * MÓDULO 6: PROTEÇÃO ANTI-INSPEÇÃO
+ * Dificulta a inspeção do código-fonte por usuários.
+ */
+function iniciarProtecaoAntiInspecao() {
+    try {
+        // 1. Bloqueio de Clique Direito
+        document.addEventListener('contextmenu', e => e.preventDefault());
+
+        // 2. Bloqueio de Atalhos do Teclado
+        document.addEventListener('keydown', e => {
+            // Bloqueia F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+            if (e.keyCode === 123 || 
+               (e.ctrlKey && e.shiftKey && (e.keyCode === 'I'.charCodeAt(0) || e.keyCode === 'J'.charCodeAt(0))) || 
+               (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))) {
+                e.preventDefault();
+            }
+        });
+
+        // 3. Detecção de Ferramentas de Desenvolvedor (Debugger)
+        // Esta técnica é mais agressiva e pode não funcionar em todos os navegadores.
+        (function() {
+            function detectDevTools() {
+                const threshold = 160;
+                const devtools = function() {};
+                devtools.toString = function() {
+                    const width = window.outerWidth - window.innerWidth > threshold;
+                    const height = window.outerHeight - window.innerHeight > threshold;
+                    if (width || height) {
+                        // Tenta travar o debugger
+                        while (true) {}
+                    }
+                    return false;
+                };
+                // Verifica periodicamente se o debugger está ativo
+                setInterval(function() {
+                    try {
+                        (function() {
+                            return false;
+                        }['constructor']('debugger')());
+                    } catch (e) {}
+                }, 500);
+            }
+            detectDevTools();
+        })();
+
+    } catch (error) {
+        console.error("Erro ao iniciar a proteção anti-inspeção:", error);
     }
 }
