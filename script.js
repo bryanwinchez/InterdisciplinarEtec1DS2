@@ -1,24 +1,14 @@
-/*
- * NOME DO ARQUIVO: script.js
- * DESCRIÇÃO: Script principal e unificado para interatividade do site.
- * VERSÃO: 10.0 - Adicionado módulo de segurança anti-inspeção.
- */
-
+/* INICIO (ATIVA OS SCRIPTS) */
 document.addEventListener("DOMContentLoaded", () => {
-    // Inicializa cada módulo de forma independente após o carregamento do DOM.
     iniciarCursor();
     iniciarMenuMobile();
     iniciarPaginaFavoritos();
     iniciarModalPesquisa();
     iniciarFlipCards();
-    iniciarProtecaoAntiInspecao(); // Adiciona o novo módulo de segurança
+    iniciarProtecaoAntiInspecao();
 });
 
-/**
- * MÓDULO 1: CURSOR PERSONALIZADO
- * Ativa um efeito de cursor que segue o mouse.
- * Ele é desativado em telas menores via CSS para melhor usabilidade.
- */
+/* CURSOR PERSONALIZADO */
 function iniciarCursor() {
     try {
         const cursor = document.querySelector(".cursor");
@@ -32,10 +22,7 @@ function iniciarCursor() {
     }
 }
 
-/**
- * MÓDULO 2: MENU HAMBÚRGUER (MOBILE)
- * Controla a exibição do menu de navegação em telas menores.
- */
+/* MENU (MOBILE) */
 function iniciarMenuMobile() {
     try {
         const menuToggle = document.querySelector(".menu-toggle");
@@ -51,10 +38,7 @@ function iniciarMenuMobile() {
     }
 }
 
-/**
- * MÓDULO 3: PÁGINA DE SELEÇÃO DE TIME FAVORITO
- * Gerencia a seleção e o armazenamento do time favorito do usuário no localStorage.
- */
+/* PÁGINA DE SELEÇÃO DE TIME FAVORITO */
 function iniciarPaginaFavoritos() {
     try {
         const timesContainer = document.getElementById('timesContainer');
@@ -110,10 +94,7 @@ function iniciarPaginaFavoritos() {
     }
 }
 
-/**
- * MÓDULO 4: MODAL DE PESQUISA (PARA FORMSUBMIT)
- * Gerencia a abertura, fechamento e validação do formulário de pesquisa.
- */
+/* MODAL DE PESQUISA (FormSubmit) */
 function iniciarModalPesquisa() {
     try {
         const modal = document.getElementById('pesquisaModal');
@@ -160,20 +141,14 @@ function iniciarModalPesquisa() {
     }
 }
 
-/**
- * MÓDULO 5: FLIP DE CARDS (DESKTOP E MOBILE)
- * Adiciona a funcionalidade de virar os cards de times ao clicar.
- */
+/* FLIP DE CARDS (DESKTOP E MOBILE) */
 function iniciarFlipCards() {
     try {
-        // Seleciona tanto os cards dos times quanto os dos jogadores
         const cards = document.querySelectorAll('.team-card, .player-card');
         if (!cards.length) return;
 
         cards.forEach(card => {
             card.addEventListener('click', (e) => {
-                // Previne que o clique em um link dentro do card (como "Ver Detalhes")
-                // cause a propagação e vire o card novamente.
                 if (e.target.closest('a')) {
                     return;
                 }
@@ -185,18 +160,11 @@ function iniciarFlipCards() {
     }
 }
 
-/**
- * MÓDULO 6: PROTEÇÃO ANTI-INSPEÇÃO
- * Dificulta a inspeção do código-fonte por usuários.
- */
+/* PROTEÇÃO ANTI-INSPEÇÃO */
 function iniciarProtecaoAntiInspecao() {
     try {
-        // 1. Bloqueio de Clique Direito
         document.addEventListener('contextmenu', e => e.preventDefault());
-
-        // 2. Bloqueio de Atalhos do Teclado
         document.addEventListener('keydown', e => {
-            // Bloqueia F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
             if (e.keyCode === 123 || 
                (e.ctrlKey && e.shiftKey && (e.keyCode === 'I'.charCodeAt(0) || e.keyCode === 'J'.charCodeAt(0))) || 
                (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))) {
@@ -204,8 +172,6 @@ function iniciarProtecaoAntiInspecao() {
             }
         });
 
-        // 3. Detecção de Ferramentas de Desenvolvedor (Debugger)
-        // Esta técnica é mais agressiva e pode não funcionar em todos os navegadores.
         (function() {
             function detectDevTools() {
                 const threshold = 160;
@@ -214,12 +180,10 @@ function iniciarProtecaoAntiInspecao() {
                     const width = window.outerWidth - window.innerWidth > threshold;
                     const height = window.outerHeight - window.innerHeight > threshold;
                     if (width || height) {
-                        // Tenta travar o debugger
                         while (true) {}
                     }
                     return false;
                 };
-                // Verifica periodicamente se o debugger está ativo
                 setInterval(function() {
                     try {
                         (function() {

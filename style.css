@@ -1,34 +1,26 @@
-/*
- * NOME DO ARQUIVO: style.css
- * DESCRIÇÃO: Folha de estilos principal e unificada para todo o site do Mundial de Clubes 2025.
- * VERSÃO: 2.2 (Correção para habilitar flip do card no mobile)
- */
-
-/* -------------------
- * FONTES E VARIÁVEIS GLOBAIS
- * ------------------- */
+/* FONTES E VARIÁVEIS GLOBAIS */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --cor-primaria: #eccf26; 
-    --cor-secundaria: #ff6b35; 
-    --fundo-escuro: #0a0a14; 
-    --fundo-claro: #151525; 
+    --cor-primaria: #eccf26;
+    --cor-secundaria: #ff6b35;
+    --fundo-escuro: #0a0a14;
+    --fundo-claro: #151525;
     --fundo-header: rgba(10, 10, 20, 0.8);
-    --texto-claro: #f0f0f0; 
+    --texto-claro: #f0f0f0;
     --texto-escuro: #111111;
     --gradiente-card: linear-gradient(145deg, var(--fundo-claro), var(--fundo-escuro));
-    --gradiente-destaque: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria)); 
+    --gradiente-destaque: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
     --borda-selecao: #fcbe04;
     --sombra-card: rgba(0, 0, 0, 0.4);
     --transicao-rapida: all 0.2s ease-in-out;
     --transicao-media: all 0.4s ease-in-out;
 }
 
-/* -------------------
- * ESTILOS GLOBAIS E RESET
- * ------------------- */
-*, *::before, *::after {
+/* ESTILOS GLOBAIS E RESET */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -37,12 +29,11 @@
 body {
     font-family: 'Poppins', 'Arial', sans-serif;
     background-color: var(--fundo-escuro);
-    /* CORREÇÃO DEFINITIVA DO FUNDO */
     background-image: linear-gradient(rgba(10, 10, 20, 0.85), rgba(10, 10, 20, 0.85)), url('https://i.imgur.com/7wU7VS0.jpeg');
-    background-size: cover; /* Faz a imagem cobrir todo o espaço */
-    background-repeat: no-repeat; /* Garante que a imagem não se repita */
-    background-position: center center; /* Centraliza a imagem */
-    background-attachment: fixed; /* Deixa a imagem fixa durante a rolagem */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
     color: var(--texto-claro);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -64,9 +55,7 @@ img {
     display: block;
 }
 
-/* -------------------
- * COMPONENTES REUTILIZÁVEIS
- * ------------------- */
+/* COMPONENTES REUTILIZÁVEIS */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -93,7 +82,7 @@ img {
     box-shadow: 0 15px 45px var(--sombra-card);
 }
 
-/* EFEITO GLITCH - Animação Contínua */
+/* EFEITO GLITCH */
 .glitch {
     position: relative;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -104,7 +93,7 @@ img {
     margin-bottom: 0;
 }
 
-.glitch::before, 
+.glitch::before,
 .glitch::after {
     content: attr(data-text);
     position: absolute;
@@ -129,16 +118,39 @@ img {
 }
 
 @keyframes glitch-anim-1 {
-    0% { clip-path: polygon(0 2%, 100% 2%, 100% 40%, 0 40%); }
-    25% { clip-path: polygon(0 50%, 100% 50%, 100% 90%, 0 90%); }
-    50% { clip-path: polygon(0 15%, 100% 15%, 100% 25%, 0 25%); }
-    75% { clip-path: polygon(0 80%, 100% 80%, 100% 70%, 0 70%); }
-    100% { clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%); }
+    0% {
+        clip-path: polygon(0 2%, 100% 2%, 100% 40%, 0 40%);
+    }
+
+    25% {
+        clip-path: polygon(0 50%, 100% 50%, 100% 90%, 0 90%);
+    }
+
+    50% {
+        clip-path: polygon(0 15%, 100% 15%, 100% 25%, 0 25%);
+    }
+
+    75% {
+        clip-path: polygon(0 80%, 100% 80%, 100% 70%, 0 70%);
+    }
+
+    100% {
+        clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%);
+    }
 }
+
 @keyframes glitch-anim-2 {
-    0% { transform: translate(0); }
-    50% { transform: translate(-2px, 1px); }
-    100% { transform: translate(0); }
+    0% {
+        transform: translate(0);
+    }
+
+    50% {
+        transform: translate(-2px, 1px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
 }
 
 
@@ -151,9 +163,7 @@ img {
     margin: 1rem auto 3rem auto;
 }
 
-/* -------------------
- * CURSOR PERSONALIZADO
- * ------------------- */
+/* CURSOR PERSONALIZADO */
 .cursor {
     z-index: 9999;
     position: fixed;
@@ -165,15 +175,16 @@ img {
     box-shadow: 0 0 20px var(--cor-primaria);
     transform: translate(-50%, -50%);
     transition: transform 0.15s ease-out;
-    display: none; /* Desabilitado por padrão em telas touch */
-}
-@media (hover: hover) and (pointer: fine) {
-    .cursor { display: block; }
+    display: none;
 }
 
-/* -------------------
- * CABEÇALHO E NAVEGAÇÃO
- * ------------------- */
+@media (hover: hover) and (pointer: fine) {
+    .cursor {
+        display: block;
+    }
+}
+
+/* CABEÇALHO E NAVEGAÇÃO */
 header {
     background: var(--fundo-header);
     backdrop-filter: blur(10px);
@@ -195,6 +206,7 @@ header {
     width: 120px;
     transition: var(--transicao-rapida);
 }
+
 .logo:hover {
     transform: scale(1.05);
 }
@@ -238,9 +250,7 @@ header {
     z-index: 1001;
 }
 
-/* -------------------
- * RODAPÉ
- * ------------------- */
+/* RODAPÉ */
 .footer {
     background: var(--gradiente-card);
     color: #ccc;
@@ -286,17 +296,37 @@ header {
     margin-bottom: 1rem;
 }
 
-.footer-logo img { width: 50px; }
-.footer-logo-text { font-size: 1.5rem; font-weight: bold; }
-.footer-description { line-height: 1.7; font-size: 0.9rem; }
+.footer-logo img {
+    width: 50px;
+}
 
-.footer-nav { list-style: none; }
-.footer-nav li { margin-bottom: 0.8rem; }
+.footer-logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.footer-description {
+    line-height: 1.7;
+    font-size: 0.9rem;
+}
+
+.footer-nav {
+    list-style: none;
+}
+
+.footer-nav li {
+    margin-bottom: 0.8rem;
+}
+
 .footer-nav a {
     color: #ccc;
     transition: var(--transicao-rapida);
 }
-.footer-nav a:hover { color: var(--cor-primaria); padding-left: 5px; }
+
+.footer-nav a:hover {
+    color: var(--cor-primaria);
+    padding-left: 5px;
+}
 
 .footer-bottom {
     margin-top: 3rem;
@@ -307,24 +337,39 @@ header {
     font-size: 0.9rem;
 }
 
-.footer-heart { color: var(--cor-secundaria); animation: heartbeat 1.5s infinite ease-in-out; }
-@keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+.footer-heart {
+    color: var(--cor-secundaria);
+    animation: heartbeat 1.5s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
 
 
-/* -------------------
- * PÁGINA: INÍCIO (index.html)
- * ------------------- */
+/* PÁGINA: INÍCIO (index.html) */
 .standings {
     width: 100%;
     border-collapse: collapse;
     overflow: hidden;
 }
-.standings th, .standings td {
+
+.standings th,
+.standings td {
     padding: 12px;
     vertical-align: middle;
     height: 60px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .standings th {
     text-align: left;
     background-color: rgba(255, 255, 255, 0.05);
@@ -333,15 +378,24 @@ header {
     font-size: 0.8rem;
     letter-spacing: 1px;
 }
-.standings tbody tr:hover { background-color: rgba(255, 255, 255, 0.03); }
+
+.standings tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
 .team-name {
-    display:flex;
+    display: flex;
     align-items: center;
     gap: 8px;
     text-align: left;
     font-weight: 500;
 }
-.team-name img { width: 30px; height: 30px; object-fit: contain; }
+
+.team-name img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
 
 .match-card .match-date {
     font-size: 1.1rem;
@@ -350,11 +404,13 @@ header {
     color: var(--cor-primaria);
     text-align: center;
 }
+
 .match-teams {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .match-teams .team {
     display: flex;
     flex-direction: column;
@@ -362,25 +418,39 @@ header {
     gap: 0.5rem;
     width: 100px;
 }
+
 .match-teams .team img {
     width: 50px;
     height: 50px;
     object-fit: contain;
 }
-.match-teams .team span { font-weight: 600; }
-.match-info { text-align: center; }
-.match-time { font-size: 1.5rem; font-weight: 700; }
-.match-venue { font-size: 0.85rem; opacity: 0.7; }
 
-/* -------------------
- * PÁGINA: CLUBES (clubes.html)
- * ------------------- */
+.match-teams .team span {
+    font-weight: 600;
+}
+
+.match-info {
+    text-align: center;
+}
+
+.match-time {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.match-venue {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* PÁGINA: CLUBES (clubes.html) */
 .teams-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     perspective: 1500px;
 }
+
 .team-card {
     height: 380px;
     position: relative;
@@ -388,13 +458,16 @@ header {
     transform-style: preserve-3d;
     cursor: pointer;
 }
-/* ATUALIZAÇÃO: A animação agora é controlada por uma classe, não pelo hover. */
+
 .team-card.is-flipped {
     transform: rotateY(180deg);
 }
-.team-front, .team-back {
+
+.team-front,
+.team-back {
     position: absolute;
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
     backface-visibility: hidden;
     border-radius: 15px;
     background: var(--gradiente-card);
@@ -406,20 +479,39 @@ header {
     padding: 2rem;
     text-align: center;
 }
+
 .team-back {
     transform: rotateY(180deg);
     justify-content: space-around;
 }
+
 .team-logo img {
     width: 90px;
     height: 90px;
     margin-bottom: 1.5rem;
     object-fit: contain;
 }
-.team-front h3, .team-back h3 { font-size: 1.5rem; }
-.team-front .country { color: var(--cor-primaria); font-weight: 400; }
-.team-info p { margin-bottom: 0.75rem; font-size: 0.9rem; }
-.team-info strong { color: var(--cor-primaria); font-weight: 600; }
+
+.team-front h3,
+.team-back h3 {
+    font-size: 1.5rem;
+}
+
+.team-front .country {
+    color: var(--cor-primaria);
+    font-weight: 400;
+}
+
+.team-info p {
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.team-info strong {
+    color: var(--cor-primaria);
+    font-weight: 600;
+}
+
 .team-btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -429,31 +521,37 @@ header {
     font-weight: 600;
     transition: var(--transicao-rapida);
 }
-.team-btn:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4); }
-.chart-container { height: 350px; padding: 1rem 0; }
 
-/* -------------------
- * PÁGINA: JOGUE (jogos.html)
- * ------------------- */
+.team-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+}
+
+.chart-container {
+    height: 350px;
+    padding: 1rem 0;
+}
+
+/* PÁGINA: JOGUE (jogos.html) */
 .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     justify-items: center;
 }
+
 .game-card img {
     border-radius: 15px;
     box-shadow: 0 10px 30px var(--sombra-card);
     transition: var(--transicao-media);
 }
+
 .game-card a:hover img {
     transform: scale(1.05);
     box-shadow: 0 0 25px var(--cor-primaria);
 }
 
-/* -------------------
- * PÁGINA: FAVORITO (favorito.html)
- * ------------------- */
+/* PÁGINA: FAVORITO (favorito.html) */
 .fav-selector-card {
     max-width: 900px;
     margin: 3rem auto;
@@ -473,6 +571,7 @@ header {
     gap: 1.5rem;
     margin: 2.5rem 0;
 }
+
 .fav-teams-container img {
     width: 120px;
     height: 120px;
@@ -480,20 +579,23 @@ header {
     background: var(--fundo-claro);
     padding: 1rem;
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     transition: var(--transicao-rapida);
     cursor: pointer;
     border: 3px solid transparent;
 }
+
 .fav-teams-container img:hover {
     transform: scale(1.1);
     border-color: rgba(252, 190, 4, 0.5);
 }
+
 .fav-teams-container img.selecionado {
     border-color: var(--borda-selecao);
     transform: scale(1.1);
     box-shadow: 0 0 20px var(--borda-selecao);
 }
+
 .botao.fav-selector-btn {
     border: none;
     background: var(--gradiente-destaque);
@@ -505,12 +607,13 @@ header {
     cursor: pointer;
     transition: var(--transicao-rapida);
 }
+
 .botao.fav-selector-btn:hover {
     transform: scale(1.05);
 }
 
 #mensagem.sucesso {
-    color: #28a745; 
+    color: #28a745;
     font-weight: 600;
     transition: color 0.3s ease;
 }
@@ -531,10 +634,12 @@ header {
     text-align: center;
     padding: 2rem 2.5rem;
 }
+
 .sobre-card h2 {
     font-size: clamp(1.5rem, 4vw, 2rem);
     margin-bottom: 1rem;
 }
+
 .sobre-card p {
     line-height: 1.8;
     max-width: 750px;
@@ -558,10 +663,12 @@ header {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
 .botao-grande:hover {
     transform: translateY(-3px) scale(1.03);
     box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
 }
+
 .botao-grande i {
     margin-right: 10px;
 }
@@ -574,6 +681,7 @@ header {
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
 .pesquisa-secao p {
     max-width: 600px;
     margin: -1rem auto 2rem;
@@ -597,6 +705,7 @@ header {
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
 .modal-overlay.visivel {
     opacity: 1;
     visibility: visible;
@@ -613,6 +722,7 @@ header {
     transform: scale(0.95);
     transition: transform 0.3s ease;
 }
+
 .modal-overlay.visivel .modal-conteudo {
     transform: scale(1);
 }
@@ -630,6 +740,7 @@ header {
     opacity: 0.7;
     transition: var(--transicao-rapida);
 }
+
 .modal-fechar:hover {
     opacity: 1;
     transform: scale(1.1);
@@ -641,11 +752,13 @@ header {
     gap: 1.5rem;
     text-align: left;
 }
+
 .form-grupo label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
 }
+
 .form-grupo select,
 .form-grupo textarea {
     width: 100%;
@@ -657,6 +770,7 @@ header {
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
 }
+
 .form-grupo select:focus,
 .form-grupo textarea:focus {
     outline: none;
@@ -671,12 +785,15 @@ header {
     color: #555;
     cursor: pointer;
 }
+
 .rating-estrelas i {
     transition: var(--transicao-rapida);
 }
+
 .rating-estrelas i.hover {
     color: #999;
 }
+
 .rating-estrelas i.selecionada {
     color: var(--cor-primaria);
     text-shadow: 0 0 10px var(--cor-primaria);
@@ -706,9 +823,7 @@ header {
     border: 1px solid rgba(220, 53, 69, 0.5);
 }
 
-/* -------------------
- * RESPONSIVIDADE
- * ------------------- */
+/* RESPONSIVIDADE */
 @media (max-width: 992px) {
     header {
         padding: 1rem;
@@ -716,7 +831,10 @@ header {
 }
 
 @media (max-width: 768px) {
-    .menu-toggle { display: block; }
+    .menu-toggle {
+        display: block;
+    }
+
     .nav-principal {
         order: 3;
         width: 100%;
@@ -724,19 +842,27 @@ header {
         overflow: hidden;
         transition: max-height 0.4s ease-in-out;
     }
-    .nav-principal.active { 
+
+    .nav-principal.active {
         max-height: 500px;
         margin-top: 1rem;
     }
+
     .nav-principal nav ul {
         flex-direction: column;
         align-items: center;
         padding: 1rem 0;
         gap: 1rem;
     }
-    header { flex-wrap: wrap; }
 
-    .standings thead { display: none; }
+    header {
+        flex-wrap: wrap;
+    }
+
+    .standings thead {
+        display: none;
+    }
+
     .standings tr {
         display: block;
         margin-bottom: 1rem;
@@ -744,6 +870,7 @@ header {
         border-radius: 10px;
         padding: 1rem;
     }
+
     .standings td {
         display: flex;
         justify-content: space-between;
@@ -752,7 +879,11 @@ header {
         padding: 0.75rem 0.5rem;
         border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
     }
-    .standings td:last-child { border-bottom: none; }
+
+    .standings td:last-child {
+        border-bottom: none;
+    }
+
     .standings td::before {
         content: attr(data-label);
         font-weight: 600;
@@ -760,29 +891,38 @@ header {
         text-align: left;
         margin-right: 1rem;
     }
+
     .standings td.team-name {
         font-size: 1.1rem;
         padding: 0.5rem 0;
     }
-    .standings td.team-name::before { display: none; }
-    
-    .match-teams { flex-direction: column; gap: 1rem; }
 
-    /* ATUALIZAÇÃO: Removidas as regras que desativavam o flip dos cards no mobile */
+    .standings td.team-name::before {
+        display: none;
+    }
+
+    .match-teams {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
     .teams-container {
-       display: grid;
-       grid-template-columns: 1fr; /* Garante uma coluna só */
-       /* A propriedade 'perspective' é herdada da regra global, permitindo a animação 3D */
-       gap: 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        /* Garante uma coluna só */
+        gap: 1.5rem;
     }
 
     .footer-container {
         text-align: center;
     }
-    .footer-section h3, .footer-logo {
+
+    .footer-section h3,
+    .footer-logo {
         justify-content: center;
         text-align: center;
     }
+
     .footer-section h3::after {
         left: 50%;
         transform: translateX(-50%);
@@ -790,40 +930,46 @@ header {
 }
 
 @media (max-width: 480px) {
-    body { font-size: 14px; }
-    header { padding: 1rem 0.75rem; }
-    .logo { width: 100px; }
-    .fav-teams-container img { width: 90px; height: 90px; }
+    body {
+        font-size: 14px;
+    }
+
+    header {
+        padding: 1rem 0.75rem;
+    }
+
+    .logo {
+        width: 100px;
+    }
+
+    .fav-teams-container img {
+        width: 90px;
+        height: 90px;
+    }
 }
 
-/* ======================================================= */
-/* NOVA SEÇÃO: OTIMIZAÇÕES PARA SMART TV E TELAS GRANDES   */
-/* ======================================================= */
 @media (min-width: 1920px) {
 
-    /* Aumenta o tamanho da fonte base. 
-       Tudo que usa 'rem' vai escalar junto! */
     :root {
         font-size: 18px;
     }
 
-    /* Aumenta o tamanho dos títulos principais para melhor legibilidade */
     .glitch {
         font-size: clamp(4rem, 6vw, 5.5rem);
     }
 
-    /* Aumenta o container principal para usar melhor o espaço da tela */
     .container {
         max-width: 1400px;
     }
 
-    /* Aumenta o espaçamento entre os cards */
-    .teams-container, .grid-container, .games-grid, .player-card-container {
+    .teams-container,
+    .grid-container,
+    .games-grid,
+    .player-card-container {
         gap: 3rem;
     }
 }
 
-/* Para telas 4K, podemos aumentar ainda mais */
 @media (min-width: 3840px) {
     :root {
         font-size: 22px;
