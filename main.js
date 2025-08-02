@@ -1,21 +1,13 @@
-// --- CÓDIGO DOS GRÁFICOS ---
+/* CÓDIGO DOS GRÁFICOS */
 document.addEventListener("DOMContentLoaded", function () {
-    // --- LÓGICA DO LOADER (CORRIGIDA PARA EVITAR FLICKER) ---
     const loader = document.getElementById('loader-wrapper');
 
     if (loader) {
-        // Verifica se o loader já foi exibido nesta sessão
         if (sessionStorage.getItem('loaderShown')) {
-            // Se já foi mostrado, esconde-o imediatamente para evitar o "flicker"
             loader.style.display = 'none';
         } else {
-            // Se é a primeira visita, espera a PÁGINA INTEIRA carregar (incluindo imagens)
-            // para garantir que a animação seja suave sobre o conteúdo completo.
             window.addEventListener('load', () => {
-                // Marca que o loader foi exibido para não aparecer novamente
                 sessionStorage.setItem('loaderShown', 'true');
-
-                // Define um tempo de 3 segundos para o loader desaparecer com a animação
                 setTimeout(() => {
                     loader.classList.add('hidden');
                 }, 3000);
@@ -24,14 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // --- CÓDIGO DOS GRÁFICOS ---
-    // A inicialização dos gráficos pode ocorrer enquanto o loader ainda está visível na primeira visita.
-
-    // Define a fonte padrão para todos os gráficos
+    /* CÓDIGO DOS GRÁFICOS */
     Chart.defaults.font.family = "'Poppins', 'Arial', sans-serif";
     Chart.defaults.color = 'rgba(255, 255, 255, 0.7)';
 
-    // --- GRÁFICO RADAR ---
+    /* GRÁFICO RADAR */
     if (document.getElementById('radarChart')) {
         const radarCtx = document.getElementById('radarChart').getContext('2d');
         new Chart(radarCtx, {
@@ -63,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // --- GRÁFICO DE PROBABILIDADE (DOUGHNUT) ---
+    /* GRÁFICO DE PROBABILIDADE */
     if (document.getElementById('probabilityChart')) {
         const probabilityCtx = document.getElementById('probabilityChart').getContext('2d');
         new Chart(probabilityCtx, {
